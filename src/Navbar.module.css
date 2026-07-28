@@ -113,18 +113,13 @@
     transition: all .3s ease;
 }
 
-/* .navItem span{
+.navItem span{
     display: block;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-} */
-
-.navItem span {
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-select: none;
 }
+
 
 /* @media (max-width: 1300px) {
     .navItem {
