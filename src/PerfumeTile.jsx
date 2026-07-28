@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./PerfumeTile.module.css";
 const backgroundImages = ['/30ml.jpg', '/60ml.jpg', '/100ml.PNG'];
+const perfumeSizes = ['30ml', '60ml', '100ml'];
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const PerfumeTile = ({ perfumeInfo }) => {
@@ -13,7 +14,8 @@ export const PerfumeTile = ({ perfumeInfo }) => {
         setSelectedSize(index);
     }
     const whatsappConnect = () => {
-        const message = `Hola, estoy interesado(a) en el siguiente producto:\n*${perfumeInfo[2]}* inspirado en *${perfumeInfo[0]}* de *${perfumeInfo[1]}*`;
+        const message = `Hola, estoy interesado(a) en el siguiente producto:\n
+        *${perfumeInfo[2]}* inspirado en *${perfumeInfo[0]}* de *${perfumeInfo[1]}* *${perfumeSizes[selectedSize]}*`;
         const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
         window.open(url, "_blank");
