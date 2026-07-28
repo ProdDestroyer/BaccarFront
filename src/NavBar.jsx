@@ -6,6 +6,7 @@ export const Navbar = () => {
 
     const [openMenu, setOpenMenu] = useState(null);
     const navigate = useNavigate();
+    const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
     return (
         <>
@@ -28,17 +29,24 @@ export const Navbar = () => {
                     </li>
                     <li
                         className={styles.navItem}
-                        onMouseEnter={() => setOpenMenu("collections")}
-                        onMouseLeave={() => setOpenMenu(null)}
+                        onMouseEnter={
+                            !isTouchDevice ? () => setOpenMenu("collections") : undefined
+                        }
+                        onMouseLeave={
+                            !isTouchDevice ? () => setOpenMenu(null) : undefined
+                        }
+                        onClick={
+                            isTouchDevice
+                                ? () =>
+                                    setOpenMenu(openMenu === "collections" ? null : "collections")
+                                : undefined
+                        }
                     >
                         <span>Colecciones</span>
 
                         <ul
                             className={`${styles.submenu} ${openMenu === "collections" ? styles.open : ""
-                                }`}
-                            onMouseEnter={() => setOpenMenu("collections")}
-                            onMouseLeave={() => setOpenMenu(null)}
-                        >
+                                }`}>
                             <li
                                 onClick={() => navigate("/corporalView")}
                                 className={styles.subMenuItem}
