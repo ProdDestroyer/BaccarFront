@@ -1,0 +1,51 @@
+.floatingButtons {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9;
+}
+
+@media (max-width: 768px) {
+    .floatingButtons {
+        top: 50px;
+    }
+}
+
+.circleButton {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #000;
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, .25),
+        0 0 12px rgba(212, 175, 55, .15);
+
+    transition: all .25s ease;
+}
+
+.circleButton:hover {
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, .35),
+        0 0 18px rgba(212, 175, 55, .35);
+
+    transform: translateY(-2px);
+}
+
+.circleButton img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}

@@ -1,0 +1,7 @@
+.generalContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    align-items: stretch;
+    gap: 10px;
+}

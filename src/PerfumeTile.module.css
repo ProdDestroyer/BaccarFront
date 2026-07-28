@@ -1,0 +1,134 @@
+.tileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2%;
+    border-radius: 3px;
+    width: 100%;
+    max-width: 100%;
+    height: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+.perfumeImageContainer {
+    height: 100%;
+    min-height: 300px;
+    width: auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.perfumeImageContainerMobile {
+    height: 100%;
+    min-height: 180px;
+    width: auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .tileContainer {
+        height: 250px;
+        display:grid;
+        grid-template-rows: 1fr, .3fr, .3fr;
+    }
+
+    .volumePicker {
+        box-sizing: border-box;
+        padding-top: 1%;
+    }
+}
+
+.perfumeImageContainer:hover h1 {
+    opacity: 1;
+}
+
+.perfumeImageContainer h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: rgb(18, 18, 18, 0.75);
+    color: white;
+    margin-bottom: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.perfumeImageContainerMobile h1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 15%;
+    background-color: rgb(18, 18, 18, 0.75);
+    color: white;
+    margin-bottom: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-size: clamp(11px, 1.5vh, 20px);
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(9px, 1.3vw, 40px);
+}
+
+.title h3 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    align-items: flex-start;
+}
+
+.volumePicker {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 3%;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.sizeButton {
+    display: flex;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    font-size: clamp(9px, 1.3vw, 25px);
+    padding-top: 10%;
+    padding-bottom: 10%;
+    align-items: center;
+    height: 40%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    transition: all .3s ease;
+}
+
+.sizeButton:hover {
+    transform: translateY(-5px);
+}
+
+.goldenColor {
+    color: rgb(212, 175, 55);
+}
