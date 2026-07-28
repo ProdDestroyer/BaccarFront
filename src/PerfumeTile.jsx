@@ -14,8 +14,7 @@ export const PerfumeTile = ({ perfumeInfo }) => {
         setSelectedSize(index);
     }
     const whatsappConnect = () => {
-        const message = `Hola, estoy interesado(a) en el siguiente producto:\n
-        *${perfumeInfo[2]}* inspirado en *${perfumeInfo[0]}* de *${perfumeInfo[1]}* *${perfumeSizes[selectedSize]}*`;
+        const message = `Hola, estoy interesado(a) en el siguiente producto:\n*${perfumeInfo[2]}* inspirado en *${perfumeInfo[0]}* de *${perfumeInfo[1]}* *${perfumeSizes[selectedSize]}*`;
         const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
         window.open(url, "_blank");
