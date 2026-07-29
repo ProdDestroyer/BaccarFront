@@ -6,11 +6,10 @@ const perfumePrices = ['$25.000', '$35.000', '$60.000'];
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const PerfumeTile = ({ perfumeInfo }) => {
-    const [backgroundImage, setBackgroundImage] = useState(backgroundImages[0]);
     const [selectedSize, setSelectedSize] = useState(0);
 
+
     const changeSelectedSize = (index) => {
-        setBackgroundImage(backgroundImages[index]);
         setSelectedSize(index);
     }
     const whatsappConnect = () => {
@@ -21,39 +20,38 @@ export const PerfumeTile = ({ perfumeInfo }) => {
     }
 
     return (
-    <div className={styles.tileContainer}>
-        <div
-            className={styles.perfumeImageContainer}
-            style={{ backgroundImage: `url(${backgroundImage})` }}
-        >
-            <h1 onClick={whatsappConnect}>
-                Comprar
-                <br />
-                {perfumePrices[selectedSize]}
-            </h1>
-        </div>
+        <div className={styles.tileContainer}>
+            <div
+                className={styles.perfumeImageContainer}
+                style={{ backgroundImage: `url(${backgroundImages[selectedSize]})` }}
+            >
+                <h1 onClick={whatsappConnect}>
+                    Comprar
+                    <br />
+                    {perfumePrices[selectedSize]}
+                </h1>
+            </div>
 
-        <div className={styles.volumePicker}>
-            {perfumeSizes.map((size, index) => (
-                <div
-                    key={size}
-                    onClick={() => changeSelectedSize(index)}
-                    className={`${styles.sizeButton} ${
-                        selectedSize === index ? styles.goldenColor : ""
-                    }`}
-                >
-                    {size}
-                </div>
-            ))}
-        </div>
+            <div className={styles.volumePicker}>
+                {perfumeSizes.map((size, index) => (
+                    <div
+                        key={size}
+                        onClick={() => changeSelectedSize(index)}
+                        className={`${styles.sizeButton} ${selectedSize === index ? styles.goldenColor : ""
+                            }`}
+                    >
+                        {size}
+                    </div>
+                ))}
+            </div>
 
-        <div className={styles.title}>
-            <p>
-                <strong>{perfumeInfo[2]}</strong> inspirado en{" "}
-                <strong>{perfumeInfo[0]}</strong> de{" "}
-                <strong>{perfumeInfo[1]}</strong>
-            </p>
+            <div className={styles.title}>
+                <p>
+                    <strong>{perfumeInfo[2]}</strong> inspirado en{" "}
+                    <strong>{perfumeInfo[0]}</strong> de{" "}
+                    <strong>{perfumeInfo[1]}</strong>
+                </p>
+            </div>
         </div>
-    </div>
-);
+    );
 }

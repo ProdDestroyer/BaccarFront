@@ -7,6 +7,7 @@
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     background: white;
+    font-family: "Inter", sans-serif;
 }
 
 .perfumeImageContainer {
@@ -41,6 +42,7 @@
 
     text-align: center;
     white-space: pre-line;
+    font-family: "Inter", sans-serif;
     margin: 0;
 }
 
@@ -98,6 +100,7 @@
     -webkit-line-clamp:4;
     -webkit-box-orient:vertical;
     overflow:hidden;
+    font-size: clamp(14px, 1.2vw, 30px);
 }
 
 @media (max-width:768px){

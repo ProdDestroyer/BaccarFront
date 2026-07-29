@@ -61,11 +61,11 @@ export const BodilyLineView = () => {
     switch (index) {
       case 0:
         setBackgroundPosition('center');
-        setPerfumesList(perfumes[1]);
+        setPerfumesList(perfumes[0]);
         break;
       case 1:
         setBackgroundPosition('center');
-        setPerfumesList(perfumes[0]);
+        setPerfumesList(perfumes[1]);
         break;
       case 2:
         setBackgroundPosition('top center');
@@ -103,7 +103,7 @@ export const BodilyLineView = () => {
         <h1 className={styles.topPanelFooterTitle}>{TOP_PANEL_FOOTER_TITLES[selectedSet]}</h1>
       </div>
       <div className={styles.perfumesPanelContainer}>
-        {!!perfumesList && <PerfumesPanel perfumesList={perfumesList}></PerfumesPanel>}
+        {!!perfumesList && <PerfumesPanel perfumesList={perfumesList} sectionName={TOP_PANEL_FOOTER_TITLES[selectedSet]}></PerfumesPanel>}
       </div>
     </>
   )
