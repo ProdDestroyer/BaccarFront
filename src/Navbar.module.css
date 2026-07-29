@@ -35,6 +35,12 @@
     margin-right: 2%;
 }
 
+@media(max-width: 768) {
+    .navBar img {
+        height: 40px;
+    }
+}
+
 .itemsContainer {
     margin-right: 15%;
     height: 100%;
