@@ -21,12 +21,6 @@ export const Navbar = () => {
 
                         <span>Inicio</span>
                     </li>
-                    <li className={styles.navItem}>
-                        <span>Perfumes</span>
-                    </li>
-                    <li className={styles.navItem}>
-                        <span>Marcas</span>
-                    </li>
                     <li
                         className={styles.navItem}
                         onMouseEnter={
@@ -42,7 +36,7 @@ export const Navbar = () => {
                                 : undefined
                         }
                     >
-                        <span>Colecciones</span>
+                        <span>Perfumes</span>
 
                         <ul
                             className={`${styles.submenu} ${openMenu === "collections" ? styles.open : ""
@@ -58,6 +52,13 @@ export const Navbar = () => {
                             <li className={styles.subMenuItem}>Automotriz</li>
                         </ul>
                     </li>
+                    <li className={styles.navItem}>
+                        <span>Marcas</span>
+                    </li>
+                    <li className={styles.navItem}>
+                        <span>Novedades</span>
+                    </li>
+                    
                     <li className={styles.navItem}>
                         <span>Contacto</span>
                     </li>
