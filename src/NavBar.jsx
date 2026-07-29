@@ -13,7 +13,7 @@ export const Navbar = () => {
             <div className={styles.navBar}>
                 <div className={styles.titleItem}>
                     <img src="./goldenLogo.png" alt="Logo" />
-                    <span>Baccar</span>
+                    {/* <span>Baccar</span> */}
                 </div>
 
                 <ul className={styles.itemsContainer}>
