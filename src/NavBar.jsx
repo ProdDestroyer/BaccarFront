@@ -24,7 +24,7 @@ export const Navbar = () => {
                     <li
                         className={styles.navItem}
                         onMouseEnter={
-                            !isTouchDevice ? () => setOpenMenu("collections") : undefined
+                            !isTouchDevice ? () => setOpenMenu("perfumes") : undefined
                         }
                         onMouseLeave={
                             !isTouchDevice ? () => setOpenMenu(null) : undefined
@@ -32,14 +32,14 @@ export const Navbar = () => {
                         onClick={
                             isTouchDevice
                                 ? () =>
-                                    setOpenMenu(openMenu === "collections" ? null : "collections")
+                                    setOpenMenu(openMenu === "perfumes" ? null : "perfumes")
                                 : undefined
                         }
                     >
                         <span>Perfumes</span>
 
                         <ul
-                            className={`${styles.submenu} ${openMenu === "collections" ? styles.open : ""
+                            className={`${styles.submenu} ${openMenu === "perfumes" ? styles.open : ""
                                 }`}>
                             <li
                                 onClick={() => navigate("/corporalView")}

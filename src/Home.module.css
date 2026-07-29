@@ -38,6 +38,11 @@
         font-size: clamp(6px, 3vw, 40px);
         height: clamp(15px, 8vw, 60px);
     }
+
+    .topPanel {
+        width: 100%;
+        min-height: calc(100dvh - 40px);
+    }
 }
 
 .newPerfumesButton:hover {

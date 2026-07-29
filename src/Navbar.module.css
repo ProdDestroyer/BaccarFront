@@ -35,12 +35,6 @@
     margin-right: 2%;
 }
 
-@media(max-width: 768px) {
-    .navBar img {
-        height: 40px;
-    }
-}
-
 .itemsContainer {
     margin-right: 15%;
     height: 100%;
@@ -73,6 +67,10 @@
     
     .navBar {
         grid-template-columns: 0.5fr 3fr;
+    }
+
+    .navBar img {
+        height: 40px;
     }
 }
 
