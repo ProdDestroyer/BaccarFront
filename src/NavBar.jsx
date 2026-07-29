@@ -47,8 +47,8 @@ export const Navbar = () => {
                             >
                                 Corporal
                             </li>
-                            <li className={styles.subMenuItem}>Textil</li>
                             <li className={styles.subMenuItem}>Hogar</li>
+                            <li className={styles.subMenuItem}>Textil</li>
                             <li className={styles.subMenuItem}>Automotriz</li>
                         </ul>
                     </li>
