@@ -35,7 +35,7 @@
     margin-right: 2%;
 }
 
-@media(max-width: 768) {
+@media(max-width: 768px) {
     .navBar img {
         height: 40px;
     }
