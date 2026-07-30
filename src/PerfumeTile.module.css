@@ -10,11 +10,24 @@
     font-family: "Inter", sans-serif;
 }
 
+.tileContainerSingle {
+    display: grid;
+    grid-template-rows: 220px 1fr;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    background: white;
+    font-family: "Inter", sans-serif;
+}
+
 .perfumeImageContainer {
     position: relative;
     width: 100%;
     height: 250px;
-
+    padding: 0;
+    margin: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -110,8 +123,14 @@
         padding:8px;
     }
 
+    .tileContainerSingle{
+        grid-template-rows:180px auto;
+        padding:8px;
+    }
+
     .perfumeImageContainer{
         height:180px;
+        background-size: cover;
     }
 
     .perfumeImageContainer h1{

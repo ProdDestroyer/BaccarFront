@@ -3,17 +3,31 @@ import styles from "./FloatingButtons.module.css";
 export const FloatingButtons = () => {
     return (
         <div className={styles.floatingButtons}>
-            <button className={styles.circleButton}>
+
+            <a
+                href="https://www.instagram.com/baccaroficial?igsh=MWw4czl5YXBiYWsxaQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.circleButton}
+            >
                 <img src="/floatingWhatsappWhite.png" alt="WhatsApp" />
-            </button>
-
-            <button className={styles.circleButton}>
+            </a>
+            <a
+                href="https://www.instagram.com/baccaroficial?igsh=MWw4czl5YXBiYWsxaQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.circleButton}
+            >
                 <img src="/floatingLocationWhite.png" alt="Location" />
-            </button>
-
-            <button className={styles.circleButton}>
-                <img src="/floatingNewsletterWhite.png" alt="Shopping" />
-            </button>
+            </a>
+            <a
+                href="https://www.instagram.com/baccaroficial?igsh=MWw4czl5YXBiYWsxaQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.circleButton}
+            >
+                <img src="/floatingInstagram.png" alt="Instagram" />
+            </a>
         </div>
     );
 };

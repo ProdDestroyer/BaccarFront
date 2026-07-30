@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
 import { FrontPage } from "./FrontPage";
-import { BodilyLineView } from "./BodilyLineView";
+import { LineView } from "./LineView";
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<FrontPage />} />
-      <Route path="/corporalView" element={<BodilyLineView />} />
+      <Route path="/corporalView" element={<LineView />} />
+      <Route path="/homeView" element={<LineView />} />
     </Routes>
   )
 }

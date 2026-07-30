@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import dbData from './DB'
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
-
+    const { bodilySection, homeSection } = dbData;
     const [openMenu, setOpenMenu] = useState(null);
     const navigate = useNavigate();
     const isTouchDevice = window.matchMedia("(hover: none)").matches;
@@ -42,12 +43,27 @@ export const Navbar = () => {
                             className={`${styles.submenu} ${openMenu === "perfumes" ? styles.open : ""
                                 }`}>
                             <li
-                                onClick={() => navigate("/corporalView")}
+                                onClick={() => navigate("/corporalView", {
+                                    state: {
+                                        sections: bodilySection,
+                                        singleSize: false,
+                                        navBarTitle: 'Corporal'
+                                    },
+                                })}
                                 className={styles.subMenuItem}
-                            >
+                                >
                                 Corporal
                             </li>
-                            <li className={styles.subMenuItem}>Hogar</li>
+                            <li onClick={() => navigate("/homeView", {
+                                state: {
+                                    sections: homeSection,
+                                    singleSize: true,
+                                    navBarTitle: 'Hogar'
+                                },
+                            })}
+                                className={styles.subMenuItem}>
+                                Hogar
+                            </li>
                             <li className={styles.subMenuItem}>Textil</li>
                             <li className={styles.subMenuItem}>Automotriz</li>
                         </ul>
@@ -58,7 +74,7 @@ export const Navbar = () => {
                     <li className={styles.navItem}>
                         <span>Novedades</span>
                     </li>
-                    
+
                     <li className={styles.navItem}>
                         <span>Contacto</span>
                     </li>
