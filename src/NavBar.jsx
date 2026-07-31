@@ -4,7 +4,7 @@ import dbData from './DB'
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
-    const { bodilySection, homeSection } = dbData;
+    const { bodilySection, homeSection, textilesSection, automotiveSection } = dbData;
     const [openMenu, setOpenMenu] = useState(null);
     const navigate = useNavigate();
     const isTouchDevice = window.matchMedia("(hover: none)").matches;
@@ -51,7 +51,7 @@ export const Navbar = () => {
                                     },
                                 })}
                                 className={styles.subMenuItem}
-                                >
+                            >
                                 Corporal
                             </li>
                             <li onClick={() => navigate("/homeView", {
@@ -64,8 +64,26 @@ export const Navbar = () => {
                                 className={styles.subMenuItem}>
                                 Hogar
                             </li>
-                            <li className={styles.subMenuItem}>Textil</li>
-                            <li className={styles.subMenuItem}>Automotriz</li>
+                            <li onClick={() => navigate("/textilesView", {
+                                state: {
+                                    sections: textilesSection,
+                                    singleSize: true,
+                                    navBarTitle: 'Textil'
+                                },
+                            })}
+                                className={styles.subMenuItem}>
+                                Textil
+                            </li>
+                            <li onClick={() => navigate("/automotiveView", {
+                                state: {
+                                    sections: automotiveSection,
+                                    singleSize: true,
+                                    navBarTitle: 'Automotriz',
+                                },
+                            })}
+                                className={styles.subMenuItem}>
+                                Automotriz
+                            </li>
                         </ul>
                     </li>
                     <li className={styles.navItem}>

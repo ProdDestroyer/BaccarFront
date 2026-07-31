@@ -14,7 +14,7 @@
 
 .navBar span {
     font-size: clamp(15px, 1.7vw, 40px);
-    cursor:default;
+    cursor: default;
 }
 
 .topMenuContainer {
@@ -30,7 +30,7 @@
 }
 
 .topPanelFooterTitle {
-    position:absolute;
+    position: absolute;
     bottom: 5%;
     left: 2%;
     color: white;
@@ -74,6 +74,7 @@
     justify-content: center;
     align-items: center;
     justify-self: center;
+    cursor: pointer;
 }
 
 .topMenuImageContainer img {
@@ -109,4 +110,30 @@
 
 .perfumesPanelContainer {
     padding: 1%;
+}
+
+.navBarImageContainer {
+    height: 60px;
+    width: auto;
+    overflow: hidden;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    width: 100%;
+    position: relative;
+}
+
+.navBarLogoContainer {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 10%;
+    cursor: pointer;
+}
+.navBarLogoContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }

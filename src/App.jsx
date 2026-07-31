@@ -9,6 +9,8 @@ export const App = () => {
       <Route path="/" element={<FrontPage />} />
       <Route path="/corporalView" element={<LineView />} />
       <Route path="/homeView" element={<LineView />} />
+      <Route path="/textilesView" element={<LineView />} />
+      <Route path="/automotiveView" element={<LineView />} />
     </Routes>
   )
 }

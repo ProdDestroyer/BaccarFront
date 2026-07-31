@@ -1,16 +1,17 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./LineView.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PerfumesPanel } from "./PerfumesPanel";
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const SHEET_ID = import.meta.env.VITE_SHEET_ID;
 
 export const LineView = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const sections = location.state?.sections;
   const singleSize = location.state?.singleSize;
   const navBarTitle = location.state?.navBarTitle;
-  const [menuShadow, setMenuShadow] = useState(false);
+  const [menuShadow, setMenuShadow] = useState(sections[0].topShadow);
   const [backgroundImage, setbackgroundImage] = useState(sections[0].imagePath);
   const [perfumes, setPerfumes] = useState([]);
   const [perfumesList, setPerfumesList] = useState(perfumes[1]);
@@ -28,31 +29,57 @@ export const LineView = () => {
   useEffect(() => {
     const fetchData = async () => {
       const perfumesDraft = [];
-      const ranges = sections.filter(section => (section.name != 'Todos')).map(section => (section.excelRange));
+      const ranges = (sections.length > 1) ? sections.filter(section => (section.name != 'Todos')).map(section => (section.excelRange)) : [sections[0].excelRange];
       const lists = await Promise.all(
         ranges.map(range => fetchRange(range))
       );
 
+      console.log(' ranges ', ranges);
       perfumesDraft.unshift(lists.flat());
-      for (let i = 0; i < lists.length; i++) {
-        perfumesDraft.push(lists[i]);
+      if (sections.length > 1) {
+        for (let i = 0; i < lists.length; i++) {
+          perfumesDraft.push(lists[i]);
+        }
       }
 
 
       setPerfumes(perfumesDraft);
       setPerfumesList(perfumesDraft[0]);
-      console.log(perfumesDraft);
+      console.log('perfumesDraft ', perfumesDraft);
       setSelectedSet(0);
     };
 
     fetchData();
   }, [sections]);
 
+  const imageRef = useRef(null);
+  const [showNavbarLogo, setShowNavbarLogo] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show when less than 25% of image is visible
+        setShowNavbarLogo(entry.intersectionRatio < 0.25);
+      },
+      {
+        threshold: [0, 0.25, 0.75, 1]
+      }
+    );
+
+    observer.observe(imageRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   const turnOnShadow = () => {
-    setMenuShadow(true);
+    if (!sections[selectedSet].topShadow) {
+      setMenuShadow(true);
+    }
   }
   const turnOffShadow = () => {
-    setMenuShadow(false);
+    if (!sections[selectedSet].topShadow) {
+      setMenuShadow(false);
+    }
   }
 
   const setBackgroundImageFacade = (index) => {
@@ -64,7 +91,15 @@ export const LineView = () => {
   return (
     <>
       <div className={styles.navBar}>
-        <span>{navBarTitle}</span>
+        {showNavbarLogo && <div className={`${styles.navBarImageContainer}`}>
+          <div className={styles.navBarLogoContainer}
+            onClick={() => navigate("/")}>
+            <img src="/goldenLogo.png" alt="" />
+          </div>
+          <span>{navBarTitle}</span>
+        </div>}
+        {!showNavbarLogo &&
+          <span>{navBarTitle}</span>}
       </div>
       <div className={styles.topMenuContainer} style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -73,8 +108,8 @@ export const LineView = () => {
         <div onMouseEnter={() => turnOnShadow()}
           onMouseLeave={() => turnOffShadow()}
           className={`${styles.logoWrapper} ${menuShadow || window.innerWidth <= 768 ? styles.shadowBackground : ''}`}>
-          <div className={styles.topMenuImageContainer}>
-            <img src="/goldenLogo.png" alt="" />
+          <div className={styles.topMenuImageContainer} onClick={() => navigate("/")}>
+            <img ref={imageRef} src="/goldenLogo.png" alt="" />
           </div>
         </div>
         <div

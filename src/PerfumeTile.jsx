@@ -1,13 +1,12 @@
 import { useState } from "react";
 import styles from "./PerfumeTile.module.css";
-// const backgroundImages = ['/30ml.jpg', '/60ml.PNG', '/100ml.jpg'];
-// const perfumePrices = ['$25.000', '$40.000', '$60.000'];
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const PerfumeTile = ({ perfumeInfo, single }) => {
     const [selectedSize, setSelectedSize] = useState(0);
     const perfumeSizes = perfumeInfo[perfumeInfo.length - 1].split(',');
     const backgroundImages = perfumeInfo[perfumeInfo.length - 2].split(',');
+    console.log(backgroundImages);
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(',');
     const whatsappMessage = perfumeInfo[perfumeInfo.length - 4];
 
@@ -47,7 +46,7 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
                 ))}
             </div>}
 
-            <div className={styles.title}>
+            <div className={`${styles.title} ${single ? styles.extraMargin : ''}`}>
                 <p>
                     {!single ? (
                         <>
