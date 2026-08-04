@@ -26,6 +26,7 @@
     border: none;
     border-radius: 50%;
 
+    border: 2px solid rgb(212, 175, 55) !important;
     background: #000;
     cursor: pointer;
 
