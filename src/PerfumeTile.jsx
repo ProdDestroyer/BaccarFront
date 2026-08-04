@@ -9,7 +9,7 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
     console.log(backgroundImages);
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(',');
     const whatsappMessage = perfumeInfo[perfumeInfo.length - 4];
-
+    console.log(backgroundImages[selectedSize]);
     const changeSelectedSize = (index) => {
         setSelectedSize(index);
     }
@@ -46,7 +46,7 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
                 ))}
             </div>}
 
-            <div className={`${styles.title} ${single ? styles.extraMargin : ''}`}>
+            <div className={styles.title}>
                 <p>
                     {!single ? (
                         <>

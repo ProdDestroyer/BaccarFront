@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./LineView.module.css";
 import { useEffect, useRef, useState } from "react";
 import { PerfumesPanel } from "./PerfumesPanel";
+import { FeaturesBanner } from "./FeaturesBanner";
+import { Footer } from "./Footer";
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const SHEET_ID = import.meta.env.VITE_SHEET_ID;
 
@@ -123,8 +125,10 @@ export const LineView = () => {
         <h1 className={styles.topPanelFooterTitle}>{sections[selectedSet].bannerText}</h1>
       </div>
       <div className={styles.perfumesPanelContainer}>
+        <FeaturesBanner></FeaturesBanner>
         {!!perfumesList && <PerfumesPanel perfumesList={perfumesList} sectionName={sections[selectedSet].name} singleSize={singleSize}></PerfumesPanel>}
       </div>
+      <Footer></Footer>
     </>
   )
 }

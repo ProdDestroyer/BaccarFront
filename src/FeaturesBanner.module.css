@@ -1,0 +1,52 @@
+.featuresContainer {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: clamp(0.5rem, 2vw, 4rem);
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+.feature {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.feature img {
+    width: clamp(32px, 8vw, 80px);
+    height: clamp(32px, 8vw, 80px);
+    object-fit: contain;
+    transition: transform 0.25s ease;
+    margin-bottom: 0.8rem; /* Space below image */
+}
+
+.feature:hover img {
+    transform: translateY(-4px) scale(1.05);
+    cursor: pointer;
+}
+
+.feature h5 {
+    margin: 0;
+    margin-bottom: 0.2rem;      /* Very small space to subtitle */
+    font-family: "Inter", sans-serif;
+    font-size: clamp(0.6rem, 2.3vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: rgb(212, 175, 55);
+}
+
+.feature h4 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(0.6rem, 1.6vw, 1rem);
+    font-weight: 400;
+    line-height: 1.3;
+    color: black;
+}
