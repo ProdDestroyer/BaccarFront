@@ -126,7 +126,14 @@ export const LineView = () => {
       </div>
       <div className={styles.perfumesPanelContainer}>
         <FeaturesBanner></FeaturesBanner>
-        {!!perfumesList && <PerfumesPanel perfumesList={perfumesList} sectionName={sections[selectedSet].name} singleSize={singleSize}></PerfumesPanel>}
+        {!!perfumesList && (
+          <PerfumesPanel
+            key={sections[selectedSet].name}
+            perfumesList={perfumesList}
+            sectionName={sections[selectedSet].name}
+            singleSize={singleSize}
+          />
+        )}
       </div>
       <Footer></Footer>
     </>

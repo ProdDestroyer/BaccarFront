@@ -50,3 +50,8 @@
         font-size: 0.8rem;
     }
 }
+
+.pagination button {
+    min-width: 38px;
+    height: 38px;
+}

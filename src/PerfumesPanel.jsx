@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./PerfumesPanel.module.css";
 import { PerfumeTile } from "./PerfumeTile";
+import { Pagination } from "./Pagination";
 
 const ROWS_PER_PAGE = 5;
+const PAGE_GROUP_SIZE = 3;
 
 export const PerfumesPanel = ({ perfumesList, sectionName, singleSize }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -16,13 +18,11 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize }) => {
 
             const computedStyle = window.getComputedStyle(gridRef.current);
 
-            // Count how many grid columns currently exist
-            const columns = computedStyle.gridTemplateColumns.split(" ").length;
+            const columns = computedStyle.gridTemplateColumns
+                .split(" ")
+                .length;
 
-            const newPerfumesPerPage = columns * ROWS_PER_PAGE;
-
-            setPerfumesPerPage(newPerfumesPerPage);
-            setCurrentPage(1);
+            setPerfumesPerPage(columns * ROWS_PER_PAGE);
         };
 
         updateColumns();
@@ -41,62 +41,30 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize }) => {
         startIndex + perfumesPerPage
     );
 
-    const firstPage = Math.max(
-        1,
-        Math.min(currentPage - 1, totalPages - 2)
-    );
+    let firstPage =
+        Math.floor((currentPage - 1) / PAGE_GROUP_SIZE) * PAGE_GROUP_SIZE + 1;
+
+    if (totalPages - firstPage + 1 < PAGE_GROUP_SIZE) {
+        firstPage = Math.max(1, totalPages - PAGE_GROUP_SIZE + 1);
+    }
 
     const pages = Array.from(
-        { length: Math.min(3, totalPages) },
+        {
+            length: Math.min(PAGE_GROUP_SIZE, totalPages),
+        },
         (_, i) => firstPage + i
     );
 
-    const renderPagination = () =>
-        totalPages > 1 && (
-            <div className={styles.pagination}>
-                <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage(1)}
-                >
-                    «
-                </button>
-
-                <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage(p => p - 1)}
-                >
-                    ←
-                </button>
-
-                {pages.map(page => (
-                    <button
-                        key={page}
-                        className={page === currentPage ? styles.activePage : ""}
-                        onClick={() => setCurrentPage(page)}
-                    >
-                        {page}
-                    </button>
-                ))}
-
-                <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage(p => p + 1)}
-                >
-                    →
-                </button>
-
-                <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage(totalPages)}
-                >
-                    »
-                </button>
-            </div>
-        );
-
     return (
         <>
-            {renderPagination()}
+            {totalPages > 1 && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    pages={pages}
+                    setCurrentPage={setCurrentPage}
+                />
+            )}
 
             <div
                 ref={gridRef}
@@ -111,7 +79,14 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize }) => {
                 ))}
             </div>
 
-            {renderPagination()}
+            {totalPages > 1 && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    pages={pages}
+                    setCurrentPage={setCurrentPage}
+                />
+            )}
         </>
     );
 };
