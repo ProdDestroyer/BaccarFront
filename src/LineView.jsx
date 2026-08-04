@@ -135,7 +135,7 @@ export const LineView = () => {
           />
         )}
       </div>
-      <Footer></Footer>
+      {!!perfumesList && (<Footer></Footer>)}
     </>
   )
 }
