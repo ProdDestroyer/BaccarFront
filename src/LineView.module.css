@@ -1,6 +1,20 @@
-.navBar {
+/* .navBar {
     background-color: black;
     height: fit-content;
+    width: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    top: 0;
+    position: sticky;
+    font-family: "Inter", sans-serif;
+    z-index: 10;
+    justify-content: center;
+} */
+
+.navBar {
+    background-color: black;
+    height: 60px; /* was fit-content */
     width: 100%;
     display: flex;
     color: white;
@@ -166,6 +180,10 @@
 
         font-size: 17px;
         line-height: 1;
+    }
+
+    .navBar {
+        height: 44px; /* matches .navBarImageContainer's mobile height */
     }
 }
 
