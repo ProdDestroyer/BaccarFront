@@ -59,32 +59,22 @@ export const LineView = () => {
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const element = imageRef.current;
+    const element = imageRef.current;
 
-      if (!element) return;
+    if (!element) return;
 
-      const rect = element.getBoundingClientRect();
-
-      // Once the entire logo has gone above the viewport
-      if (rect.bottom <= 0) {
-        setShowNavbarLogo(true);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowNavbarLogo(!entry.isIntersecting);
+      },
+      {
+        threshold: 0
       }
+    );
 
-      // Don't immediately turn it off around the boundary.
-      // Require the logo to come noticeably back into view.
-      else if (rect.top >= 100) {
-        setShowNavbarLogo(false);
-      }
-    };
+    observer.observe(element);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => observer.disconnect();
   }, []);
 
   const turnOnShadow = () => {
@@ -107,13 +97,17 @@ export const LineView = () => {
   return (
     <>
       <div className={styles.navBar}>
-        {showNavbarLogo && <div className={`${styles.navBarImageContainer}`}>
-          <div className={styles.navBarLogoContainer}
-            onClick={() => navigate("/")}>
-            <img src="/goldenLogo.png" alt="" />
+        <div
+          className={`${styles.navBarImageContainer} ${showNavbarLogo ? styles.navBarLogoVisible : styles.navBarLogoHidden
+            }`}
+        >
+          <div
+            className={styles.navBarLogoContainer}
+            onClick={() => navigate("/")}
+          >
+            {navBarTitle}
           </div>
-          <span>{navBarTitle}</span>
-        </div>}
+        </div>
         {!showNavbarLogo &&
           <span>{navBarTitle}</span>}
       </div>
