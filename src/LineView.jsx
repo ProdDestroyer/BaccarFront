@@ -173,7 +173,7 @@ export const LineView = () => {
         {!perfumesList ? (
           <Spinner />
         ) : (
-          <PerfumesPanel scrollTop={scrollTop}
+          <PerfumesPanel
             key={sections[selectedSet].name}
             perfumesList={perfumesList}
             sectionName={sections[selectedSet].name}

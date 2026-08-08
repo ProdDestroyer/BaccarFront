@@ -6,7 +6,7 @@ import { Pagination } from "./Pagination";
 const ROWS_PER_PAGE = 5;
 const PAGE_GROUP_SIZE = 3;
 
-export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, scrollTop }) => {
+export const PerfumesPanel = ({ perfumesList, sectionName, singleSize }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [perfumesPerPage, setPerfumesPerPage] = useState(15);
 
@@ -29,7 +29,6 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, scrollTop
 
         window.addEventListener("resize", updateColumns);
 
-        scrollTop();
         return () => window.removeEventListener("resize", updateColumns);
     }, []);
 
