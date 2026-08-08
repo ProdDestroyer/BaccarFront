@@ -115,33 +115,15 @@
 
 .navBarImageContainer {
     height: 60px;
-    width: 100%;
-
+    width: auto;
     overflow: hidden;
-
     background: black;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    z-index: 20;
-
-    transition: opacity .2s ease;
-}
-
-.navBarLogoVisible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.navBarLogoHidden {
-    opacity: 0;
-    pointer-events: none;
+    justify-self: center;
+    width: 100%;
+    position: relative;
 }
 
 .navBarLogoContainer {

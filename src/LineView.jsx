@@ -59,20 +59,17 @@ export const LineView = () => {
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
   useEffect(() => {
-    const element = imageRef.current;
-
-    if (!element) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setShowNavbarLogo(!entry.isIntersecting);
+        // Show when less than 25% of image is visible
+        setShowNavbarLogo(entry.intersectionRatio < 0.25);
       },
       {
-        threshold: 0
+        threshold: [0, 0.25, 0.75, 1]
       }
     );
 
-    observer.observe(element);
+    observer.observe(imageRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -97,17 +94,13 @@ export const LineView = () => {
   return (
     <>
       <div className={styles.navBar}>
-        <div
-          className={`${styles.navBarImageContainer} ${showNavbarLogo ? styles.navBarLogoVisible : styles.navBarLogoHidden
-            }`}
-        >
-          <div
-            className={styles.navBarLogoContainer}
-            onClick={() => navigate("/")}
-          >
-            {navBarTitle}
+        {showNavbarLogo && <div className={`${styles.navBarImageContainer}`}>
+          <div className={styles.navBarLogoContainer}
+            onClick={() => navigate("/")}>
+            <img src="/goldenLogo.png" alt="" />
           </div>
-        </div>
+          <span>{navBarTitle}</span>
+        </div>}
         {!showNavbarLogo &&
           <span>{navBarTitle}</span>}
       </div>
@@ -118,7 +111,7 @@ export const LineView = () => {
         <div onMouseEnter={() => turnOnShadow()}
           onMouseLeave={() => turnOffShadow()}
           className={`${styles.logoWrapper} ${menuShadow || window.innerWidth <= 768 ? styles.shadowBackground : ''}`}>
-          <div ref={imageRef} className={styles.topMenuImageContainer} onClick={() => navigate("/")}>
+          <div className={styles.topMenuImageContainer} onClick={() => navigate("/")}>
             <img ref={imageRef} src="/goldenLogo.png" alt="" />
           </div>
         </div>
