@@ -60,28 +60,27 @@ export const LineView = () => {
   const imageRef = useRef(null);
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (!imageRef.current) return;
+  useEffect(() => {
+    const handleScroll = () => {
+        if (!imageRef.current) return;
 
-  //     const rect = imageRef.current.getBoundingClientRect();
+        const rect = imageRef.current.getBoundingClientRect();
 
-  //     // const shouldShow = rect.bottom <= 60;
+        const shouldShow = rect.bottom <= 60;
 
-  //     // setShowNavbarLogo(prev =>
-  //     //   prev === shouldShow ? prev : shouldShow
-  //     // );
-  //     setShowNavbarLogo(false);
-  //   };
+        setShowNavbarLogo(prev =>
+            prev === shouldShow ? prev : shouldShow
+        );
+    };
 
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-  //   handleScroll();
+    handleScroll();
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    };
+}, []);
 
   // const scrollTop = () => {
   //   window.scrollTo(0, 0);
