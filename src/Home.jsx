@@ -76,7 +76,7 @@ export const Home = () => {
         </div>
         <FloatingButtons></FloatingButtons>
       </div >
-      <div className={styles.frontListsContainer}>
+      {/* <div className={styles.frontListsContainer}>
         {loading ? (
           <Spinner />
         ) : (
@@ -94,7 +94,7 @@ export const Home = () => {
             </div>
           ))
         )}
-      </div>
+      </div> */}
     </>
   )
 }
