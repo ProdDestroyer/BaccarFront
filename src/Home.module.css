@@ -1,4 +1,5 @@
 /*============================== Top Panel ==============================*/
+
 .topPanel {
     width: 100%;
     min-height: calc(100dvh - 60px);
@@ -14,35 +15,31 @@
     display: flex;
 }
 
+
 /*============================== Main Front Message ==============================*/
+
 .newPerfumesButton {
     background-color: black;
     color: white;
+
     font-family: "Inter", sans-serif;
     font-size: clamp(6px, 1.5vw, 40px);
+
     padding: 1%;
+
     border-radius: 40px;
+
     width: 15%;
     height: clamp(15px, 3vw, 60px);
+
     margin-left: 5%;
     margin-bottom: 1%;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-    .newPerfumesButton {
-        width: 30%;
-        font-size: clamp(6px, 3vw, 40px);
-        height: clamp(15px, 8vw, 60px);
-    }
-
-    .topPanel {
-        width: 100%;
-        min-height: calc(100dvh - 40px);
-    }
 }
 
 .newPerfumesButton:hover {
@@ -51,45 +48,62 @@
     cursor: pointer;
 }
 
+
 .frontMessageBox {
     font-family: "Inter", sans-serif;
     font-size: clamp(20px, 2vw, 40px);
+
     display: flex;
     flex-direction: column;
+
     color: black;
+
     width: 100%;
+
     align-self: last baseline;
 }
+
 
 .innerFrontMessageText {
     margin: 0;
     margin-left: 5%;
+
     white-space: nowrap;
 }
+
 
 .innerFrontMessageSubtext {
     margin: 0;
     margin-left: 5%;
+
     font-size: clamp(18px, 1.5vw, 40px);
     font-weight: 500;
+
     white-space: nowrap;
 }
+
 
 h1 {
     line-height: 1;
 }
 
+
 /*============================== Front Bottom ==============================*/
+
 .frontBottomButtonsContainer {
     display: flex;
     flex-direction: row;
+
     gap: 10%;
+
     justify-content: center;
+
     margin-top: 10%;
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 3%;
 }
+
 
 .button {
     width: clamp(180px, 22vw, 280px);
@@ -104,6 +118,7 @@ h1 {
     border-radius: 10px;
 
     cursor: pointer;
+
     transition: all .25s ease;
 
     box-shadow:
@@ -111,59 +126,78 @@ h1 {
         0 10px 24px rgba(112, 76, 24, 0.12);
 }
 
+
 .button span {
     font-family: "Inter", sans-serif;
+
     font-size: clamp(12px, 1.3vw, 22px);
     font-weight: 600;
+
     letter-spacing: .5px;
 
-    background: linear-gradient(180deg,
-            #f5e6b8 0%,
-            #e8ca7b 25%,
-            #c89b4b 55%,
-            #9b6d2d 100%);
+    background: linear-gradient(
+        180deg,
+        #f5e6b8 0%,
+        #e8ca7b 25%,
+        #c89b4b 55%,
+        #9b6d2d 100%
+    );
 
     -webkit-background-clip: text;
     background-clip: text;
+
     color: transparent;
 
     transition: all .25s ease;
 }
 
+
 .button:hover {
     border-color: rgba(232, 202, 123, .8);
+
     box-shadow:
         0 5px 14px rgba(0, 0, 0, 0.22),
         0 0 16px rgba(212, 175, 55, .18);
 }
 
+
 .button:hover span {
-    background: linear-gradient(180deg,
-            #fff6d8,
-            #f7dc8f 30%,
-            #e2bb5f 60%,
-            #b9872e);
+    background: linear-gradient(
+        180deg,
+        #fff6d8,
+        #f7dc8f 30%,
+        #e2bb5f 60%,
+        #b9872e
+    );
 
     -webkit-background-clip: text;
     background-clip: text;
 }
 
+
 .black {
     background: #000;
 }
+
 
 .white {
     background: #fff;
 }
 
 
+/*============================== Front Lists ==============================*/
+
 .frontListsContainer {
     margin-top: 1.5%;
 }
 
+
 .frontListAnchor {
     scroll-margin-top: 120px;
 }
+
+
+/*============================== Loading ==============================*/
 
 .loadingSection {
     width: 100%;
@@ -173,6 +207,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+
 
 .spinner {
     width: 38px;
@@ -186,8 +221,40 @@ h1 {
     animation: spin 0.8s linear infinite;
 }
 
+
 @keyframes spin {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+/*============================== Mobile ==============================*/
+
+@media (max-width: 768px) {
+
+    .topPanel {
+        /*
+         * svh stays stable while the mobile browser
+         * address bar appears/disappears.
+         */
+        min-height: calc(100svh - 40px);
+
+        /*
+         * Prevent the background from reacting to
+         * horizontal overflow.
+         */
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .newPerfumesButton {
+        width: 30%;
+
+        font-size: clamp(6px, 3vw, 40px);
+
+        height: clamp(15px, 8vw, 60px);
+    }
+
 }
