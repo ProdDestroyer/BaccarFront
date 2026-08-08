@@ -50,6 +50,7 @@ export const LineView = () => {
       setPerfumesList(perfumesDraft[0]);
       console.log('perfumesDraft ', perfumesDraft);
       setSelectedSet(0);
+      window.scrollTo(0, 0);
     };
 
     fetchData();
@@ -80,6 +81,10 @@ export const LineView = () => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
       setMenuShadow(true);
@@ -108,21 +113,20 @@ export const LineView = () => {
           <span>{navBarTitle}</span>
         </div>} */}
         <div
-    className={`${styles.navBarImageContainer} ${
-        showNavbarLogo
-            ? styles.navBarLogoVisible
-            : styles.navBarLogoHidden
-    }`}
->
-    <div
-        className={styles.navBarLogoContainer}
-        onClick={() => navigate("/")}
-    >
-        <img src="/goldenLogo.png" alt="" />
-    </div>
+          className={`${styles.navBarImageContainer} ${showNavbarLogo
+              ? styles.navBarLogoVisible
+              : styles.navBarLogoHidden
+            }`}
+        >
+          <div
+            className={styles.navBarLogoContainer}
+            onClick={() => navigate("/")}
+          >
+            <img src="/goldenLogo.png" alt="" />
+          </div>
 
-    <span>{navBarTitle}</span>
-</div>
+          <span>{navBarTitle}</span>
+        </div>
         {!showNavbarLogo &&
           <span>{navBarTitle}</span>}
       </div>
