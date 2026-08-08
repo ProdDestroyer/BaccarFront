@@ -64,9 +64,7 @@ export const LineView = () => {
 
       const rect = imageRef.current.getBoundingClientRect();
 
-      const navbarHeight = 60;
-
-      const shouldShow = rect.bottom <= navbarHeight;
+      const shouldShow = rect.bottom <= 60;
 
       setShowNavbarLogo(prev =>
         prev === shouldShow ? prev : shouldShow
