@@ -55,26 +55,24 @@ export const LineView = () => {
     fetchData();
   }, [sections]);
 
- const imageRef = useRef(null);
-const [showNavbarLogo, setShowNavbarLogo] = useState(false);
+  const imageRef = useRef(null);
+  const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-        if (!imageRef.current) return;
+      if (!imageRef.current) return;
 
-        const rect = imageRef.current.getBoundingClientRect();
+      const rect = imageRef.current.getBoundingClientRect();
 
-        // Scrolling DOWN:
-        // Show the navbar logo once the circular logo has passed above the viewport.
-        if (!showNavbarLogo && rect.bottom <= 0) {
-            setShowNavbarLogo(true);
-        }
+      // Going down
+      if (!showNavbarLogo && rect.bottom <= 0) {
+        setShowNavbarLogo(true);
+      }
 
-        // Scrolling UP:
-        // Hide the navbar logo once the circular logo comes back clearly into view.
-        if (showNavbarLogo && rect.top >= 20) {
-            setShowNavbarLogo(false);
-        }
+      // Coming back up
+      if (showNavbarLogo && rect.bottom > 0) {
+        setShowNavbarLogo(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -82,9 +80,9 @@ useEffect(() => {
     handleScroll();
 
     return () => {
-        window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-}, [showNavbarLogo]);
+  }, [showNavbarLogo]);
 
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
