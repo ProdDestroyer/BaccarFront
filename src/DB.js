@@ -1,3 +1,4 @@
+//Lines
 const bodilySection = [
     { name: 'Todos', imagePath: '/goldenCouple2.jpg', bannerText: 'Todos los Perfumes', backgroundPosition: 'center', topShadow: false },
     { name: 'Mujer', imagePath: '/goldenFemaleModel.jpg', excelRange: "'Esencias y Sensaciones'!B7:H103", bannerText: 'Perfumes Para Mujer', backgroundPosition: 'center', topShadow: false },
@@ -16,9 +17,15 @@ const textilesSection = [
 const automotiveSection = [
     { name: 'Todos', imagePath: '/car.jpg', excelRange: "'Automotriz'!B3:F5", bannerText: 'Fragancia Automotriz', backgroundPosition: 'center', topShadow: true }];
 
+//FrontPageRelatedData
+const frontLists = [
+    { title: 'Tendencias', excelRange: "'Tendencias'!B4:H8", },
+    { title: 'Novedades', excelRange: "'Novedades'!B4:H8", }];
+
 export default {
     bodilySection,
     homeSection,
     textilesSection,
     automotiveSection,
+    frontLists,
 }

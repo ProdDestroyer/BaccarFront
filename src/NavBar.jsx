@@ -8,20 +8,26 @@ export const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(null);
     const navigate = useNavigate();
     const isTouchDevice = window.matchMedia("(hover: none)").matches;
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
     return (
         <>
             <div className={styles.navBar}>
-                <div className={styles.titleItem}>
+                <div className={styles.titleItem} onClick={() => scrollToTop()}>
                     <img src="./goldenLogo.png" alt="Logo" />
                     {/* <span>Baccar</span> */}
                 </div>
 
                 <ul className={styles.itemsContainer}>
-                    <li className={styles.navItem}>
+                    {/* <li className={styles.navItem}>
 
                         <span>Inicio</span>
-                    </li>
+                    </li> */}
                     <li
                         className={styles.navItem}
                         onMouseEnter={
@@ -90,7 +96,7 @@ export const Navbar = () => {
                         <span>Marcas</span>
                     </li>
                     <li className={styles.navItem}>
-                        <span>Novedades</span>
+                        <span>Haz Parte</span>
                     </li>
 
                     <li className={styles.navItem}>

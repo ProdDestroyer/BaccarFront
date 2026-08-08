@@ -1,0 +1,19 @@
+.tilesContainer {
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: clamp(8px, 2vw, 24px);
+    
+    width: 100%;
+    box-sizing: border-box;
+    
+    padding: clamp(8px, 2vw, 20px);
+}
+
+.title {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    font-size: clamp(16px, 2vw, 35px);
+}
