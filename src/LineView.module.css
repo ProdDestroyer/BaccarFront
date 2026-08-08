@@ -24,6 +24,7 @@
     grid-template-rows: 1fr 0.25fr 4fr;
     grid-template-columns: 1fr;
     justify-content: center;
+
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -39,12 +40,83 @@
     font-family: "Inter", sans-serif;
 }
 
-/* @media(max-width: 763px) {
-    .topPanelFooterTitle {
-        bottom: 3%;
-    }
-} */
- @media (max-width: 768px) {
+/* ============================= */
+/* LOGO NAVBAR                    */
+/* ============================= */
+
+.navBarImageContainer {
+    height: 60px;
+    width: 100%;
+
+    overflow: hidden;
+    background: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*
+     * IMPORTANT:
+     * It stays in the DOM all the time.
+     * We only hide/show its contents visually.
+     */
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    transition: opacity 0.15s ease;
+}
+
+.navBarLogoVisible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.navBarLogoHidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navBarLogoContainer {
+    position: absolute;
+
+    left: 5%;
+
+    height: 100%;
+    width: auto;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navBarLogoContainer img {
+    width: 50px;
+    height: 50px;
+
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.navBarLogoContainer span {
+    font-family: "Inter", sans-serif;
+    color: white;
+
+    font-size: clamp(15px, 1.7vw, 40px);
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+/* ============================= */
+/* MOBILE                        */
+/* ============================= */
+
+@media (max-width: 768px) {
 
     .navBarImageContainer {
         height: 44px;
@@ -53,20 +125,33 @@
 
     .navBarLogoContainer {
         left: 4%;
+
         height: 44px;
+        width: auto;
+
         padding: 0;
         margin: 0;
 
         display: flex;
         align-items: center;
+
         gap: 7px;
     }
 
     .navBarLogoContainer img {
         width: 36px;
         height: 36px;
+
         margin: 0;
         padding: 0;
+    }
+
+    .navBarLogoContainer span {
+        margin: 0;
+        padding: 0;
+
+        font-size: 17px;
+        line-height: 1;
     }
 
     .navBar span {
@@ -76,17 +161,24 @@
         font-size: 17px;
         line-height: 1;
     }
-
 }
+
+/* ============================= */
+/* LOGO / TOP MENU               */
+/* ============================= */
 
 .logoWrapper {
     width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding-top: 1%;
     padding-bottom: 1%;
+
     transition: all .3s ease;
+
     position: sticky;
 }
 
@@ -101,19 +193,25 @@
 .topMenuImageContainer {
     width: 80px;
     height: 80px;
+
     border-radius: 50%;
     overflow: hidden;
+
     background: black;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     justify-self: center;
+
     cursor: pointer;
 }
 
 .topMenuImageContainer img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
 }
 
@@ -121,16 +219,23 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+
     transition: all .3s ease;
+
     gap: 3%;
-    position: sticky
+
+    position: sticky;
 }
 
 .topMenuItems span {
     font-family: "Inter", sans-serif;
+
     font-size: clamp(15px, 1.2vw, 30px);
+
     cursor: pointer;
+
     transition: all .3s ease;
+
     color: white;
 }
 
@@ -142,61 +247,11 @@
     color: rgb(212, 175, 55);
 }
 
+/* ============================= */
+/* PERFUMES                      */
+/* ============================= */
+
 .perfumesPanelContainer {
     padding: 1%;
     margin-top: 0;
-}
-
-/* .navBarImageContainer {
-    height: 60px;
-    width: auto;
-    overflow: hidden;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-self: center;
-    width: 100%;
-    position: relative;
-} */
-.navBarImageContainer {
-    height: 60px;
-    width: 100%;
-
-    overflow: hidden;
-    background: black;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    z-index: 1000;
-}
-.navBarLogoContainer {
-    position: absolute;
-    left: 5%;
-
-    height: 100%;
-    width: 10%;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-}
-/* .navBarLogoContainer {
-    position: absolute;
-    left: 5%;
-    height: 100%;
-    width: 10%;
-    cursor: pointer;
-} */
-.navBarLogoContainer img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
