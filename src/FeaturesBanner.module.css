@@ -50,3 +50,9 @@
     line-height: 1.3;
     color: black;
 }
+
+@media (max-width: 768px) {
+ .featuresContainer {
+    margin-top: 3%;
+ }   
+}
