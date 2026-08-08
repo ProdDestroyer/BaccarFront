@@ -59,22 +59,32 @@ export const LineView = () => {
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
   useEffect(() => {
-    const element = imageRef.current;
+    const handleScroll = () => {
+      const element = imageRef.current;
 
-    if (!element) return;
+      if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowNavbarLogo(!entry.isIntersecting);
-      },
-      {
-        threshold: 0
+      const rect = element.getBoundingClientRect();
+
+      // Once the entire logo has gone above the viewport
+      if (rect.bottom <= 0) {
+        setShowNavbarLogo(true);
       }
-    );
 
-    observer.observe(element);
+      // Don't immediately turn it off around the boundary.
+      // Require the logo to come noticeably back into view.
+      else if (rect.top >= 100) {
+        setShowNavbarLogo(false);
+      }
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const turnOnShadow = () => {
