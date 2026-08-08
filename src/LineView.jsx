@@ -59,17 +59,20 @@ export const LineView = () => {
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
   useEffect(() => {
+    const element = imageRef.current;
+
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Show when less than 25% of image is visible
-        setShowNavbarLogo(entry.intersectionRatio < 0.25);
+        setShowNavbarLogo(!entry.isIntersecting);
       },
       {
-        threshold: [0, 0.25, 0.75, 1]
+        threshold: 0
       }
     );
 
-    observer.observe(imageRef.current);
+    observer.observe(element);
 
     return () => observer.disconnect();
   }, []);
