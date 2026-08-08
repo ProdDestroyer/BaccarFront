@@ -66,11 +66,12 @@ export const LineView = () => {
 
       const rect = imageRef.current.getBoundingClientRect();
 
-      const shouldShow = rect.bottom <= 60;
+      // const shouldShow = rect.bottom <= 60;
 
-      setShowNavbarLogo(prev =>
-        prev === shouldShow ? prev : shouldShow
-      );
+      // setShowNavbarLogo(prev =>
+      //   prev === shouldShow ? prev : shouldShow
+      // );
+      setShowNavbarLogo(false);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
