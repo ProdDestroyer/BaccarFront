@@ -80,14 +80,6 @@ export const LineView = () => {
     };
   }, []);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant"
-    });
-  }, []);
-
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
       setMenuShadow(true);

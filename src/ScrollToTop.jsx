@@ -7,13 +7,22 @@ export const ScrollToTop = () => {
     useEffect(() => {
         window.history.scrollRestoration = "manual";
 
-        requestAnimationFrame(() => {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "instant"
+        // First reset
+        window.scrollTo(0, 0);
+
+        // Safari can restore/adjust the position after the
+        // new route has rendered, so reset again after layout.
+        const frame1 = requestAnimationFrame(() => {
+            window.scrollTo(0, 0);
+
+            const frame2 = requestAnimationFrame(() => {
+                window.scrollTo(0, 0);
             });
+
+            return () => cancelAnimationFrame(frame2);
         });
+
+        return () => cancelAnimationFrame(frame1);
     }, [pathname]);
 
     return null;
