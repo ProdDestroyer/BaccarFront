@@ -20,6 +20,8 @@ export const LineView = () => {
   const [perfumesList, setPerfumesList] = useState(perfumes[1]);
   const [selectedSet, setSelectedSet] = useState(0);
 
+  // const scrollRef = useRef(null);
+
   const fetchRange = async (range) => {
     const response = await fetch(
       `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?key=${API_KEY}`
@@ -81,9 +83,19 @@ export const LineView = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    console.log("Before:", window.scrollY);
+
+    window.scrollTo(0, 1000);
+
+    requestAnimationFrame(() => {
+        console.log("After frame:", window.scrollY);
+
+        requestAnimationFrame(() => {
+            console.log("After 2 frames:", window.scrollY);
+        });
+    });
+}, []);
 
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
@@ -105,28 +117,13 @@ export const LineView = () => {
   return (
     <>
       <div className={styles.navBar}>
-        {/* {showNavbarLogo && <div className={`${styles.navBarImageContainer}`}>
+        {showNavbarLogo && <div className={`${styles.navBarImageContainer}`}>
           <div className={styles.navBarLogoContainer}
             onClick={() => navigate("/")}>
             <img src="/goldenLogo.png" alt="" />
           </div>
           <span>{navBarTitle}</span>
-        </div>} */}
-        <div
-          className={`${styles.navBarImageContainer} ${showNavbarLogo
-              ? styles.navBarLogoVisible
-              : styles.navBarLogoHidden
-            }`}
-        >
-          <div
-            className={styles.navBarLogoContainer}
-            onClick={() => navigate("/")}
-          >
-            <img src="/goldenLogo.png" alt="" />
-          </div>
-
-          <span>{navBarTitle}</span>
-        </div>
+        </div>}
         {!showNavbarLogo &&
           <span>{navBarTitle}</span>}
       </div>

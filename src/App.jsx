@@ -6,7 +6,7 @@ import { ScrollToTop } from "./ScrollToTop";
 export const App = () => {
     return (
         <>
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
 
             <Routes>
                 <Route path="/" element={<FrontPage />} />
