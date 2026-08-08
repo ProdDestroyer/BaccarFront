@@ -108,19 +108,21 @@ export const LineView = () => {
           <span>{navBarTitle}</span>
         </div>} */}
         <div
-          className={`${styles.navBarImageContainer} ${showNavbarLogo
-              ? styles.navBarLogoVisible
-              : styles.navBarLogoHidden
-            }`}
-        >
-          <div
-            className={styles.navBarLogoContainer}
-            onClick={() => navigate("/")}
-          >
-            <img src="/goldenLogo.png" alt="" />
-            <span>{navBarTitle}</span>
-          </div>
-        </div>
+    className={`${styles.navBarImageContainer} ${
+        showNavbarLogo
+            ? styles.navBarLogoVisible
+            : styles.navBarLogoHidden
+    }`}
+>
+    <div
+        className={styles.navBarLogoContainer}
+        onClick={() => navigate("/")}
+    >
+        <img src="/goldenLogo.png" alt="" />
+    </div>
+
+    <span>{navBarTitle}</span>
+</div>
         {!showNavbarLogo &&
           <span>{navBarTitle}</span>}
       </div>
