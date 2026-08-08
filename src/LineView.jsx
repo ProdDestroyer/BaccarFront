@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { PerfumesPanel } from "./PerfumesPanel";
 import { FeaturesBanner } from "./FeaturesBanner";
 import { Footer } from "./Footer";
+import { Spinner } from "./Spinner";
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const SHEET_ID = import.meta.env.VITE_SHEET_ID;
 
@@ -126,7 +127,9 @@ export const LineView = () => {
       </div>
       <div className={styles.perfumesPanelContainer}>
         <FeaturesBanner></FeaturesBanner>
-        {!!perfumesList && (
+        {!perfumesList ? (
+          <Spinner />
+        ) : (
           <PerfumesPanel
             key={sections[selectedSet].name}
             perfumesList={perfumesList}
