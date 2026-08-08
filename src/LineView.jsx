@@ -121,8 +121,8 @@ export const LineView = () => {
         <div onMouseEnter={() => turnOnShadow()}
           onMouseLeave={() => turnOffShadow()}
           className={`${styles.logoWrapper} ${menuShadow || window.innerWidth <= 768 ? styles.shadowBackground : ''}`}>
-          <div className={styles.topMenuImageContainer} onClick={() => navigate("/")}>
-            <img ref={imageRef} src="/goldenLogo.png" alt="" />
+          <div ref={imageRef} className={styles.topMenuImageContainer} onClick={() => navigate("/")}>
+            <img src="/goldenLogo.png" alt="" />
           </div>
         </div>
         <div
