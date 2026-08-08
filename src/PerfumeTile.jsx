@@ -6,10 +6,8 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
     const [selectedSize, setSelectedSize] = useState(0);
     const perfumeSizes = perfumeInfo[perfumeInfo.length - 1].split(',');
     const backgroundImages = perfumeInfo[perfumeInfo.length - 2].split(',');
-    console.log(backgroundImages);
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(',');
     const whatsappMessage = perfumeInfo[perfumeInfo.length - 4];
-    console.log(backgroundImages[selectedSize]);
     const changeSelectedSize = (index) => {
         setSelectedSize(index);
     }
