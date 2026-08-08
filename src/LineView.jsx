@@ -64,15 +64,13 @@ export const LineView = () => {
 
       const rect = imageRef.current.getBoundingClientRect();
 
-      // Going down
-      if (!showNavbarLogo && rect.bottom <= 0) {
-        setShowNavbarLogo(true);
-      }
+      const navbarHeight = 60;
 
-      // Coming back up
-      if (showNavbarLogo && rect.bottom > 0) {
-        setShowNavbarLogo(false);
-      }
+      const shouldShow = rect.bottom <= navbarHeight;
+
+      setShowNavbarLogo(prev =>
+        prev === shouldShow ? prev : shouldShow
+      );
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -82,7 +80,7 @@ export const LineView = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [showNavbarLogo]);
+  }, []);
 
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
