@@ -55,24 +55,36 @@ export const LineView = () => {
     fetchData();
   }, [sections]);
 
-  const imageRef = useRef(null);
-  const [showNavbarLogo, setShowNavbarLogo] = useState(false);
+ const imageRef = useRef(null);
+const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Show when less than 25% of image is visible
-        setShowNavbarLogo(entry.intersectionRatio < 0.25);
-      },
-      {
-        threshold: [0, 0.25, 0.75, 1]
-      }
-    );
+useEffect(() => {
+    const handleScroll = () => {
+        if (!imageRef.current) return;
 
-    observer.observe(imageRef.current);
+        const rect = imageRef.current.getBoundingClientRect();
 
-    return () => observer.disconnect();
-  }, []);
+        // Scrolling DOWN:
+        // Show the navbar logo once the circular logo has passed above the viewport.
+        if (!showNavbarLogo && rect.bottom <= 0) {
+            setShowNavbarLogo(true);
+        }
+
+        // Scrolling UP:
+        // Hide the navbar logo once the circular logo comes back clearly into view.
+        if (showNavbarLogo && rect.top >= 20) {
+            setShowNavbarLogo(false);
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    handleScroll();
+
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    };
+}, [showNavbarLogo]);
 
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
