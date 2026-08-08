@@ -52,7 +52,7 @@ export const LineView = () => {
       setPerfumesList(perfumesDraft[0]);
       console.log('perfumesDraft ', perfumesDraft);
       setSelectedSet(0);
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     };
 
     fetchData();
@@ -83,19 +83,19 @@ export const LineView = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log("Before:", window.scrollY);
+//   useEffect(() => {
+//     console.log("Before:", window.scrollY);
 
-    window.scrollTo(0, 1000);
+//     window.scrollTo(0, 1000);
 
-    requestAnimationFrame(() => {
-        console.log("After frame:", window.scrollY);
+//     requestAnimationFrame(() => {
+//         console.log("After frame:", window.scrollY);
 
-        requestAnimationFrame(() => {
-            console.log("After 2 frames:", window.scrollY);
-        });
-    });
-}, []);
+//         requestAnimationFrame(() => {
+//             console.log("After 2 frames:", window.scrollY);
+//         });
+//     });
+// }, []);
 
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {

@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { FrontPage } from "./FrontPage";
 import { LineView } from "./LineView";
-import { ScrollToTop } from "./ScrollToTop";
+// import { ScrollToTop } from "./ScrollToTop";
 
 export const App = () => {
     return (
         <>
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
 
             <Routes>
                 <Route path="/" element={<FrontPage />} />
