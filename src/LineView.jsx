@@ -60,26 +60,17 @@ export const LineView = () => {
   const imageRef = useRef(null);
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-        if (!imageRef.current) return;
+useEffect(() => {
+    const node = imageRef.current;
+    if (!node) return;
 
-        const rect = imageRef.current.getBoundingClientRect();
+    const observer = new IntersectionObserver(
+        ([entry]) => setShowNavbarLogo(!entry.isIntersecting),
+        { rootMargin: "-60px 0px 0px 0px", threshold: 0 }
+    );
 
-        const shouldShow = rect.bottom <= 60;
-
-        setShowNavbarLogo(prev =>
-            prev === shouldShow ? prev : shouldShow
-        );
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    handleScroll();
-
-    return () => {
-        window.removeEventListener("scroll", handleScroll);
-    };
+    observer.observe(node);
+    return () => observer.disconnect();
 }, []);
 
   // const scrollTop = () => {
