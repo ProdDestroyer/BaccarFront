@@ -52,7 +52,6 @@ export const LineView = () => {
       setPerfumesList(perfumesDraft[0]);
       console.log('perfumesDraft ', perfumesDraft);
       setSelectedSet(0);
-      // window.scrollTo(0, 0);
     };
 
     fetchData();
@@ -82,6 +81,11 @@ export const LineView = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const scrollTop = () => {
+    window.scrollTo(0, 0);
+    console.log('scrolled top');
+  }
 
 //   useEffect(() => {
 //     console.log("Before:", window.scrollY);
@@ -168,7 +172,7 @@ export const LineView = () => {
         {!perfumesList ? (
           <Spinner />
         ) : (
-          <PerfumesPanel
+          <PerfumesPanel scrollTop={scrollTop}
             key={sections[selectedSet].name}
             perfumesList={perfumesList}
             sectionName={sections[selectedSet].name}
