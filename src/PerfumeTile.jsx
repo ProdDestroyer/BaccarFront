@@ -54,7 +54,7 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
                 ) : (
                     <>
                         Ambientador aroma{" "}
-                        <strong>{perfumeInfo[0]}</strong>
+                        <strong>{perfumeInfo[1]}</strong>
                     </>
                 )}
 
