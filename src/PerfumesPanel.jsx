@@ -72,6 +72,7 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix })
             >
                 {currentPerfumes.map((perfumeData, index) => (
                     <PerfumeTile
+                        prefix={prefix}
                         key={`${startIndex + index}-${sectionName}`}
                         perfumeInfo={perfumeData}
                         single={singleSize}
