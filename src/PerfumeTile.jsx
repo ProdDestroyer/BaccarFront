@@ -45,11 +45,11 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
 
                 {!single ? (
                     <>
-                        <strong>{perfumeInfo[2]}</strong>{" "}
+                        <strong>{perfumeInfo[3]}</strong>{" "}
                         inspirado en{" "}
-                        <strong>{perfumeInfo[0]}</strong>{" "}
+                        <strong>{perfumeInfo[1]}</strong>{" "}
                         de{" "}
-                        <strong>{perfumeInfo[1]}</strong>
+                        <strong>{perfumeInfo[2]}</strong>
                     </>
                 ) : (
                     <>
