@@ -1,7 +1,8 @@
 import styles from "./FloatingButtons.module.css";
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 const WHATSAPP_MESSAGE = 'Hola quisiera ser atendido(a) por este medio';
-const LOCATION_MESSAGE = 'Hola quisiera saber dónde están ubicados';
+const LATITUDE = import.meta.env.VITE_LOCATION_LATITUDE;
+const LONGITUDE = import.meta.env.VITE_LOCATION_LONGITUDE;
 
 export const FloatingButtons = () => {
 
@@ -12,6 +13,15 @@ export const FloatingButtons = () => {
         window.open(url, "_blank");
     }
 
+    const openMaps = () => {
+        console.log('latitude:', LATITUDE)
+        console.log('longitude:', LONGITUDE)
+        window.open(
+            `https://www.google.com/maps/search/?api=1&query=${LATITUDE},${LONGITUDE}`,
+            "_blank"
+        );
+    };
+
     return (
         <div className={styles.floatingButtons}>
 
@@ -20,11 +30,11 @@ export const FloatingButtons = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.circleButton}
-                >
+            >
                 <img src="/floatingWhatsappWhite.png" alt="WhatsApp" />
             </a>
             <a
-                onClick={() => whatsappConnect(LOCATION_MESSAGE)}
+                onClick={openMaps}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.circleButton}
