@@ -1,8 +1,7 @@
 import styles from "./FloatingButtons.module.css";
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 const WHATSAPP_MESSAGE = 'Hola quisiera ser atendido(a) por este medio';
-const LATITUDE = import.meta.env.VITE_LOCATION_LATITUDE;
-const LONGITUDE = import.meta.env.VITE_LOCATION_LONGITUDE;
+const LOCATION_ADDRESS = import.meta.env.VITE_LOCATION_ADDRESS;
 
 export const FloatingButtons = () => {
 
@@ -13,13 +12,13 @@ export const FloatingButtons = () => {
         window.open(url, "_blank");
     }
 
+    const LOCATION_ADDRESS = import.meta.env.VITE_LOCATION_ADDRESS;
+
     const openMaps = () => {
-        console.log('latitude:', LATITUDE)
-        console.log('longitude:', LONGITUDE)
-        window.open(
-            `https://www.google.com/maps/search/?api=1&query=${LATITUDE},${LONGITUDE}`,
-            "_blank"
-        );
+        const url =
+            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(LOCATION_ADDRESS)}`;
+
+        window.open(url, "_blank");
     };
 
     return (
