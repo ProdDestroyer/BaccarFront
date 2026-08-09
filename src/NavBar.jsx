@@ -71,7 +71,8 @@ export const Navbar = () => {
                                 state: {
                                     sections: homeSection,
                                     singleSize: true,
-                                    navBarTitle: 'Hogar'
+                                    navBarTitle: 'Hogar',
+                                    prefix: 'Difusor',
                                 },
                             })}
                                 className={styles.subMenuItem}>
@@ -81,7 +82,8 @@ export const Navbar = () => {
                                 state: {
                                     sections: textilesSection,
                                     singleSize: true,
-                                    navBarTitle: 'Textil'
+                                    navBarTitle: 'Textil',
+                                    prefix: 'Aromatizante',
                                 },
                             })}
                                 className={styles.subMenuItem}>
@@ -92,6 +94,7 @@ export const Navbar = () => {
                                     sections: automotiveSection,
                                     singleSize: true,
                                     navBarTitle: 'Automotriz',
+                                    prefix: 'Ambientador',
                                 },
                             })}
                                 className={styles.subMenuItem}>

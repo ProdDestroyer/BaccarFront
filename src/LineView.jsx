@@ -14,6 +14,7 @@ export const LineView = () => {
   const sections = location.state?.sections;
   const singleSize = location.state?.singleSize;
   const navBarTitle = location.state?.navBarTitle;
+  const prefix = location.state?.prefix;
   const [menuShadow, setMenuShadow] = useState(sections[0].topShadow);
   const [backgroundImage, setbackgroundImage] = useState(sections[0].imagePath);
   const [perfumes, setPerfumes] = useState([]);
@@ -140,6 +141,7 @@ useEffect(() => {
             perfumesList={perfumesList}
             sectionName={sections[selectedSet].name}
             singleSize={singleSize}
+            prefix={prefix}
           />
         )}
       </div>

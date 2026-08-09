@@ -2,7 +2,7 @@ import styles from "./PerfumeTile.module.css";
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
-export const PerfumeTile = ({ perfumeInfo, single }) => {
+export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
 
     const backgroundImage = perfumeInfo[perfumeInfo.length - 2];
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(",");
@@ -53,7 +53,7 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
                     </>
                 ) : (
                     <>
-                        Ambientador aroma{" "}
+                        {prefix} aroma{" "}
                         <strong>{perfumeInfo[1]}</strong>
                     </>
                 )}
