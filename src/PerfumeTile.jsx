@@ -24,11 +24,11 @@ export const PerfumeTile = ({ perfumeInfo, single }) => {
 
             <div className={styles.imageWrapper}>
 
-                <img
+                {backgroundImage && <img
                     src={backgroundImage}
                     alt={perfumeInfo[0]}
                     className={styles.image}
-                />
+                />}
 
                 <div
                     className={styles.buyOverlay}
