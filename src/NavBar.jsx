@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import dbData from './DB'
 import styles from "./Navbar.module.css";
+import { useSheetData } from "./context/SheetDataContext";
 
 export const Navbar = () => {
-    const { bodilySection, homeSection, textilesSection, automotiveSection } = dbData;
+    const {
+        bodilySection,
+        homeSection,
+        textilesSection,
+        automotiveSection,
+        loading,
+        error
+    } = useSheetData();
     const [openMenu, setOpenMenu] = useState(null);
     const navigate = useNavigate();
     const isTouchDevice = window.matchMedia("(hover: none)").matches;
@@ -52,7 +59,7 @@ export const Navbar = () => {
                                 onClick={() => navigate("/corporalView", {
                                     state: {
                                         sections: bodilySection,
-                                        singleSize: false,
+                                        singleSize: true,
                                         navBarTitle: 'Corporal'
                                     },
                                 })}

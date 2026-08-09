@@ -1,21 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Search } from "lucide-react";
 import styles from "./SearchBar.module.css";
-
-const perfumes = [
-    { id: 1, name: "Sauvage Dior" },
-    { id: 2, name: "Bleu de Chanel" },
-    { id: 3, name: "Acqua di Gio" },
-    { id: 4, name: "One Million" },
-    { id: 5, name: "Invictus" },
-    { id: 6, name: "Baccarat Rouge 540" },
-    { id: 7, name: "Eros Versace" },
-    { id: 8, name: "Black Orchid" },
-    { id: 9, name: "Le Male" },
-    { id: 10, name: "Good Girl" }
-];
+import { useSheetData } from "./context/SheetDataContext";
 
 export const SearchBar = () => {
+
+    const {
+        bodilySection,
+        homeSection,
+        textilesSection,
+        automotiveSection,
+        loading,
+        error
+    } = useSheetData();
 
     const [open, setOpen] = useState(false);
     const [text, setText] = useState("");
@@ -24,7 +21,44 @@ export const SearchBar = () => {
     const containerRef = useRef(null);
     const inputRef = useRef(null);
 
+
+    const perfumes = useMemo(() => {
+
+        if (loading) {
+            return [];
+        }
+
+        const allSections = [
+            bodilySection,
+            homeSection,
+            textilesSection,
+            automotiveSection
+        ];
+
+        return allSections
+            .filter(Boolean)
+            .flat()
+            .filter(section => section.name !== "Todos")
+            .flatMap(section => section.data || [])
+            .map((row, index) => ({
+                row,
+                name: row[0],
+                image: row.at(-2),
+                type: row.type,
+                id: `${row[0]}-${row.type}-${index}`
+            }));
+
+    }, [
+        bodilySection,
+        homeSection,
+        textilesSection,
+        automotiveSection,
+        loading
+    ]);
+
+
     const toggleSearch = (e) => {
+
         e.stopPropagation();
 
         if (open) {
@@ -40,6 +74,7 @@ export const SearchBar = () => {
             inputRef.current?.focus();
         });
     };
+
 
     useEffect(() => {
 
@@ -64,6 +99,7 @@ export const SearchBar = () => {
 
     }, []);
 
+
     useEffect(() => {
 
         if (!text.trim()) {
@@ -73,10 +109,13 @@ export const SearchBar = () => {
 
         const timeout = setTimeout(() => {
 
+            const searchText = text.toLowerCase().trim();
+
             const filtered = perfumes.filter(perfume =>
                 perfume.name
+                    ?.toString()
                     .toLowerCase()
-                    .includes(text.toLowerCase())
+                    .includes(searchText)
             );
 
             setResults(filtered);
@@ -85,7 +124,13 @@ export const SearchBar = () => {
 
         return () => clearTimeout(timeout);
 
-    }, [text]);
+    }, [text, perfumes]);
+
+
+    if (loading || error) {
+        return null;
+    }
+
 
     return (
         <div
@@ -104,6 +149,7 @@ export const SearchBar = () => {
                 />
             </button>
 
+
             <input
                 ref={inputRef}
                 className={`${styles.input} ${open ? styles.open : ""}`}
@@ -112,17 +158,31 @@ export const SearchBar = () => {
                 placeholder="Buscar perfume..."
             />
 
+
             {results.length > 0 && (
                 <div className={styles.results}>
 
                     {results.slice(0, 3).map(result => (
+
                         <div
                             key={result.id}
                             className={styles.result}
                         >
-                            {result.name}
+
+                            <img
+                                src={result.image}
+                                alt=""
+                                className={styles.resultImage}
+                            />
+
+                            <span className={styles.resultName}>
+                                {result.name}
+                            </span>
+
                         </div>
+
                     ))}
+
 
                     {results.length > 3 && (
                         <div className={styles.more}>

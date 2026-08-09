@@ -3,15 +3,18 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import { App } from "./App";
+import { SheetDataProvider } from "./context/SheetDataContext";
 
 if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
 }
 
 createRoot(document.getElementById("root")).render(
-    <StrictMode>
+    // <StrictMode>
         <BrowserRouter>
-            <App />
+            <SheetDataProvider>
+                <App />
+            </SheetDataProvider>
         </BrowserRouter>
-    </StrictMode>
+    // </StrictMode>
 );
