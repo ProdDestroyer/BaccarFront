@@ -51,6 +51,16 @@
     }
 }
 
+@media (max-width: 360px) {
+
+    .generalContainer {
+        padding-left: 8px;
+        padding-right: 8px;
+        box-sizing: border-box;
+    }
+
+}
+
 .pagination button {
     min-width: 38px;
     height: 38px;
