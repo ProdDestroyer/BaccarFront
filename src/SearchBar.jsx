@@ -178,6 +178,9 @@ export const SearchBar = () => {
                             <span className={styles.resultName}>
                                 {result.name}
                             </span>
+                            <span className={styles.resultName}>
+                                {result.type}
+                            </span>
 
                         </div>
 
