@@ -59,7 +59,7 @@ export const Navbar = () => {
                                 onClick={() => navigate("/corporalView", {
                                     state: {
                                         sections: bodilySection,
-                                        singleSize: true,
+                                        singleSize: false,
                                         navBarTitle: 'Corporal'
                                     },
                                 })}
