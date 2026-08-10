@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import styles from "./PerfumeDetail.module.css";
 import { VolumeCarousel } from "./VolumeCarousel";
-import { SimpleTopbar } from "./SimpleTopbar";
+import { SimpleTopBar } from "./SimpleTopBar";
 import { useState } from "react";
 import { Footer } from "./Footer";
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
@@ -36,7 +36,7 @@ export const PerfumeDetail = () => {
 
     return (
         <>
-            <SimpleTopbar title={perfumeData.name} />
+            <SimpleTopBar title={perfumeData.name} />
             <div className={styles.page}>
                 <div className={styles.product}>
 
