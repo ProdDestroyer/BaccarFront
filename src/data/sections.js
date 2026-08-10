@@ -90,10 +90,10 @@ export const automotiveSection = [
 export const frontLists = [
     {
         name: 'Tendencias',
-        excelRange: "'Tendencias'!B4:H8"
+        excelRange: "'Tendencias'!B4:I8"
     },
     {
         name: 'Novedades',
-        excelRange: "'Novedades'!B4:H8"
+        excelRange: "'Novedades'!B4:I8"
     }
 ];

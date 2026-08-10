@@ -8,7 +8,7 @@ export const FrontPerfumeTile = ({ perfumeInfo }) => {
 
             <div className={styles.imageWrapper}>
                 <img
-                    src={perfumeInfo[5]}
+                    src={perfumeInfo[6]}
                     alt={perfumeInfo[1]}
                     className={styles.image}
                 />
