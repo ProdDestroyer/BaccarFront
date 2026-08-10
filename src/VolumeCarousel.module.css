@@ -1,0 +1,181 @@
+.volumePanel {
+    width: 100%;
+
+    margin-top: 30px;
+}
+
+
+.volumeTitle {
+    margin-bottom: 12px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #333;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+}
+
+
+.volumeList {
+    display: flex;
+
+    gap: 12px;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding: 3px 3px 10px;
+
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+}
+
+
+.volumeList::-webkit-scrollbar {
+    height: 5px;
+}
+
+
+.volumeList::-webkit-scrollbar-thumb {
+    background: rgb(212, 175, 55);
+
+    border-radius: 10px;
+}
+
+
+/* TILE */
+
+.volumeTile {
+    flex: 0 0 90px;
+
+    padding: 7px;
+
+    border: 1px solid #d5d5d5;
+
+    border-radius: 10px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-family: "Inter", sans-serif;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+
+.volumeTile:hover {
+    transform: translateY(-2px);
+
+    border-color: rgb(212, 175, 55);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, .12),
+        0 0 6px rgba(212, 175, 55, .3);
+}
+
+
+/* IMAGE */
+
+.imageWrapper {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+.image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* VOLUME TEXT */
+
+.volumeName {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    text-align: center;
+}
+
+
+/* SELECTED */
+
+.selected {
+    border-color: rgb(212, 175, 55);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, .12),
+        0 0 7px rgba(212, 175, 55, .4);
+}
+
+
+.selected .volumeName {
+    color: rgb(212, 175, 55);
+
+    font-weight: 700;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .volumePanel {
+        margin-top: 25px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .volumeTitle {
+        text-align: center;
+    }
+
+    .volumeList {
+        justify-content: center;
+    }
+
+    .volumeTile {
+        flex: 0 0 80px;
+    }
+
+    .volumeName {
+        font-size: 12px;
+    }
+    
+}
