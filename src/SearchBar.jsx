@@ -2,8 +2,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Search } from "lucide-react";
 import styles from "./SearchBar.module.css";
 import { useSheetData } from "./context/SheetDataContext";
+import { useNavigate } from "react-router-dom";
+
 
 export const SearchBar = () => {
+
+    const navigate = useNavigate();
 
     const {
         bodilySection,
@@ -42,7 +46,7 @@ export const SearchBar = () => {
             .flatMap(section => section.data || [])
             .map((row, index) => ({
                 row,
-                name: row[0],
+                name: row[1],
                 image: row.at(-2),
                 type: row.type,
                 id: `${row[0]}-${row.type}-${index}`
@@ -167,6 +171,11 @@ export const SearchBar = () => {
                         <div
                             key={result.id}
                             className={styles.result}
+                            onClick={() => navigate("/perfumeDetail", {
+                                state: {
+                                    result,
+                                },
+                            })}
                         >
 
                             <img

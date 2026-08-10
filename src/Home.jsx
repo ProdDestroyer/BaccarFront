@@ -63,7 +63,7 @@ export const Home = () => {
           />
           <button className={styles.newPerfumesButton} onClick={() => scrollToList("Novedades")}>Nuevos Perfumes</button>
           <h1 className={`${styles.innerFrontMessageText} ${styles.firstFrontMessageTextLine}`}>Trasciende Tu <br /> Escencia</h1>
-          <h5 className={styles.innerFrontMessageSubtext}>Hazte notar, descubre tu perfume</h5>
+          <h5 className={styles.innerFrontMessageSubtext}>Hazte notar, descubre tu aroma <br /> con los mejores perfumes inspirados</h5>
           <div className={styles.frontBottomButtonsContainer}>
             <button className={`${styles.button} ${styles.black}`} onClick={() => scrollToList("Novedades")}>
               <span>Ver Novedades</span>

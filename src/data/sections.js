@@ -9,7 +9,7 @@ export const bodilySection = [
     {
         name: 'Mujer',
         imagePath: '/goldenFemaleModel.jpg',
-        excelRange: "'Esencias y Sensaciones'!B7:J103",
+        excelRange: "'Esencias y Sensaciones'!B7:K103",
         bannerText: 'Perfumes Para Mujer',
         backgroundPosition: 'center',
         topShadow: false
@@ -17,7 +17,7 @@ export const bodilySection = [
     {
         name: 'Hombre',
         imagePath: '/goldenMaleModel.jpg',
-        excelRange: "'Esencias y Sensaciones'!B107:J201",
+        excelRange: "'Esencias y Sensaciones'!B107:K201",
         bannerText: 'Perfumes Para Hombre',
         backgroundPosition: 'center',
         topShadow: false
@@ -25,7 +25,7 @@ export const bodilySection = [
     {
         name: 'Unisex',
         imagePath: '/goldenCouple.jpg',
-        excelRange: "'Esencias y Sensaciones'!B205:J218",
+        excelRange: "'Esencias y Sensaciones'!B205:K218",
         bannerText: 'Perfumes Unisex',
         backgroundPosition: 'center',
         topShadow: false
