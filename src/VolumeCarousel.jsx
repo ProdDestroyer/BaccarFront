@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./VolumeCarousel.module.css";
 
-export const VolumeCarousel = ({ volumesString }) => {
+export const VolumeCarousel = ({ volumesString, setSelectedVolumeIndex }) => {
 
     const volumes = volumesString
         ? volumesString
@@ -19,6 +19,10 @@ export const VolumeCarousel = ({ volumesString }) => {
         return null;
     }
 
+    const updateSelectedVolumeIndex = (index) => {
+        setSelectedVolume(volumes[index]);
+        setSelectedVolumeIndex(index);
+    }
 
     return (
         <div className={styles.volumePanel}>
@@ -29,7 +33,7 @@ export const VolumeCarousel = ({ volumesString }) => {
 
             <div className={styles.volumeList}>
 
-                {volumes.map(volume => {
+                {volumes.map((volume, index) => {
 
                     const selected = selectedVolume === volume;
 
@@ -42,7 +46,7 @@ export const VolumeCarousel = ({ volumesString }) => {
                                     ? styles.selected
                                     : ""
                             }`}
-                            onClick={() => setSelectedVolume(volume)}
+                            onClick={() => updateSelectedVolumeIndex(index)}
                         >
 
                             <div className={styles.imageWrapper}>

@@ -5,11 +5,9 @@
 
     box-sizing: border-box;
 
-    padding: 40px 5%;
+    padding: calc(60px + 40px) 5% 40px 1%;
 
     font-family: "Inter", sans-serif;
-
-    background: white;
 }
 
 
@@ -243,11 +241,12 @@
 
     font-size: clamp(15px, 1.2vw, 20px);
 
-    line-height: 1.7;
+    line-height: 1;
 
     color: #333;
 
     overflow-wrap: anywhere;
+    white-space: pre-line;
 }
 
 
@@ -310,7 +309,7 @@
 @media (max-width: 768px) {
 
     .page {
-        padding: 25px 5%;
+         padding: calc(44px + 25px) 5% 25px 5%;
     }
 
     .product {
