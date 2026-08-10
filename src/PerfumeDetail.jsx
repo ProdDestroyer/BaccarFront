@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import styles from "./PerfumeDetail.module.css";
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
@@ -17,10 +18,35 @@ export const PerfumeDetail = () => {
     console.log("perfumeData ", perfumeData);
 
 
+    /*
+     * Example:
+     * perfumeData.row[9] = "30ml,50ml,100ml"
+     *
+     * Result:
+     * ["30ml", "50ml", "100ml"]
+     */
+    const volumes = perfumeData.row?.[9]
+        ? perfumeData.row[9]
+            .split(",")
+            .map(volume => volume.trim())
+            .filter(Boolean)
+        : [];
+
+
+    const [selectedVolume, setSelectedVolume] = useState(
+        volumes[0] || null
+    );
+
+
+    console.log("selectedVolume:", selectedVolume);
+
+
     const whatsappConnect = () => {
 
         const message =
-            `Hola, estoy interesado(a) en el siguiente producto:\n${perfumeData.name}`;
+            `Hola, estoy interesado(a) en el siguiente producto:\n` +
+            `${perfumeData.name}\n` +
+            `Presentación: ${selectedVolume}`;
 
         const url =
             `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -85,6 +111,58 @@ export const PerfumeDetail = () => {
                         </div>
 
                     </div>
+
+
+                    {/* VOLUME PANEL */}
+
+                    {volumes.length > 0 && (
+
+                        <div className={styles.volumePanel}>
+
+                            <div className={styles.volumeTitle}>
+                                Presentación
+                            </div>
+
+                            <div className={styles.volumeList}>
+
+                                {volumes.map(volume => (
+
+                                    <button
+                                        key={volume}
+                                        type="button"
+                                        className={`${styles.volumeTile} ${
+                                            selectedVolume === volume
+                                                ? styles.volumeSelected
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            setSelectedVolume(volume)
+                                        }
+                                    >
+
+                                        <div className={styles.volumeImageWrapper}>
+
+                                            <img
+                                                src={`/${volume}.png`}
+                                                alt={volume}
+                                                className={styles.volumeImage}
+                                            />
+
+                                        </div>
+
+                                        <span className={styles.volumeName}>
+                                            {volume}
+                                        </span>
+
+                                    </button>
+
+                                ))}
+
+                            </div>
+
+                        </div>
+
+                    )}
 
 
                     {/* BUY BUTTON */}
