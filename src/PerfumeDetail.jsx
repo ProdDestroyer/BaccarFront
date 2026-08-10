@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styles from "./PerfumeDetail.module.css";
+import { VolumeCarousel } from "./VolumeCarousel";
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const PerfumeDetail = () => {
@@ -87,9 +88,9 @@ export const PerfumeDetail = () => {
 
                     {/* VOLUME PANEL */}
 
-                    <div>
-
-                    </div>
+                    <VolumeCarousel
+                        volumesString={perfumeData.row[9]}
+                    />
 
 
                     {/* BUY BUTTON */}
