@@ -154,6 +154,20 @@
 
     .volumePanel {
         margin-top: 25px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .volumeTitle {
+        text-align: center;
+    }
+
+    .volumeList {
+        justify-content: center;
     }
 
     .volumeTile {
@@ -163,5 +177,4 @@
     .volumeName {
         font-size: 12px;
     }
-    
 }
