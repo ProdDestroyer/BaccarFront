@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./SimpleNavbar.module.css";
 
-export const SimpleNavbar = ({ title }) => {
+export const SimpleTopbar = ({ title }) => {
 
     const navigate = useNavigate();
 
