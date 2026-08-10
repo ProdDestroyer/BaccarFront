@@ -92,7 +92,6 @@ export const PerfumeDetail = () => {
                         volumesString={perfumeData.row[9]}
                     />
 
-
                     {/* BUY BUTTON */}
 
                     <button
