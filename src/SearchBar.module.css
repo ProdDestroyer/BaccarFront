@@ -8,9 +8,9 @@
 
     width: clamp(180px, 30vw, 340px);
 
-    margin-bottom: .2%;
+    margin-bottom: .4%;
 
-    z-index: 100;
+    /* z-index: 100; */
 }
 
 
@@ -30,7 +30,7 @@
 
     padding: 0;
 
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 
@@ -113,7 +113,7 @@
 
     font-family: "Inter", sans-serif;
 
-    z-index: 999;
+    /* z-index: 999; */
 }
 
 
@@ -228,5 +228,9 @@
     .resultImage {
         width: 36px;
         height: 36px;
+    }
+
+    .container {
+        margin-bottom: 3%;
     }
 }
