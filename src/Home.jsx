@@ -1,13 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import FloatingButtons from "./FloatingButtons";
 import { FrontList } from "./FrontList";
 import styles from "./Home.module.css";
 import { SearchBar } from "./SearchBar";
-import { Spinner } from "./Spinner";
 import { useSheetData } from "./context/SheetDataContext";
-
-// const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-// const SHEET_ID = import.meta.env.VITE_SHEET_ID;
 
 export const Home = () => {
   const {
@@ -15,8 +11,6 @@ export const Home = () => {
   } = useSheetData();
   const frontPerfumesLists = frontLists;
   console.log('home: ', frontLists);
-  // const [frontPerfumesLists, setFrontPerfumesLists] = useState([]);
-  // const [loading, setLoading] = useState(true);
 
   const frontListRefs = useRef({});
 
@@ -26,37 +20,6 @@ export const Home = () => {
       block: "start"
     });
   };
-
-  // const fetchRange = async (range) => {
-  //   const response = await fetch(
-  //     `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?key=${API_KEY}`
-  //   );
-
-  //   const data = await response.json();
-  //   return data.values;
-  // };
-
-  // useEffect(() => {
-  //   if (frontLists?.length > 1) {
-  //     const fetchData = async () => {
-  //       const perfumesDraft = [];
-  //       const ranges = frontLists.map(section => (section.excelRange));
-  //       const lists = await Promise.all(
-  //         ranges.map(range => fetchRange(range))
-  //       );
-  //       for (let i = 0; i < frontLists.length; i++) {
-  //         perfumesDraft.push({ title: frontLists[i].title, perfumesList: lists[i] });
-  //       }
-
-
-  //       setFrontPerfumesLists(perfumesDraft);
-  //       setLoading(false);
-  //     };
-
-  //     fetchData();
-
-  //   }
-  // }, [frontLists]);
 
   return (
     <>
@@ -81,15 +44,12 @@ export const Home = () => {
         <FloatingButtons></FloatingButtons>
       </div >
       <div className={styles.frontListsContainer}>
-        {/* {loading ? (
-          <Spinner />
-        ) : ( */}
           {frontPerfumesLists?.map((frontPerfumeList, index) => (
             <div
               key={index}
               className={styles.frontListAnchor}
               ref={(element) => {
-                frontListRefs.current[frontPerfumeList.title] = element;
+                frontListRefs.current[frontPerfumeList.name] = element;
               }}
             >
               <FrontList
@@ -97,7 +57,6 @@ export const Home = () => {
               />
             </div>
           ))}
-         {/* )} */}
       </div>
     </>
   )
