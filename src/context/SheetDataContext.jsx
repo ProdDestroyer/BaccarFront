@@ -16,6 +16,7 @@ const SheetDataContext = createContext(null);
 
 export const SheetDataProvider = ({ children }) => {
 
+    console.log('here', frontLists);
     const [sheetData, setSheetData] = useState(null);
 
     const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ export const SheetDataProvider = ({ children }) => {
                 });
 
                 setSheetData(data);
-
+                console.log('sheetData', data);
             } catch (error) {
 
                 console.error(

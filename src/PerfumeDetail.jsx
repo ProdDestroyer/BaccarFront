@@ -12,8 +12,9 @@ export const PerfumeDetail = () => {
     const location = useLocation();
     const perfumeData = {
         ...location.state?.result,
-        logo: "YOUR_LOGO_URL_HERE"
     };
+
+    console.log('perfumeData', perfumeData);
 
     const description = perfumeData.row[perfumeData.row.length - 5];
     const [price, setPrice] = useState(perfumeData.row[perfumeData.row.length - 3].split(',')[0])

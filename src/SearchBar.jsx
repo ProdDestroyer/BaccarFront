@@ -44,12 +44,12 @@ export const SearchBar = () => {
             .flat()
             .filter(section => section.name !== "Todos")
             .flatMap(section => section.data || [])
-            .map((row, index) => ({
+            .map(row => ({
                 row,
                 name: row[1],
                 image: row.at(-2),
                 type: row.type,
-                id: `${row[0]}-${row.type}-${index}`
+                id: `${row[0]}`
             }));
 
     }, [
