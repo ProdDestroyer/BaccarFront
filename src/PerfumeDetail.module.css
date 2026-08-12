@@ -35,10 +35,6 @@
 
     min-width: 0;
 
-    /*
-     * Keep the entire left panel within the available
-     * viewport height on desktop.
-     */
     max-height: calc(100vh - 140px);
 }
 
@@ -49,13 +45,6 @@
     position: relative;
 
     width: 100%;
-
-    /*
-     * The image can shrink if the title needs more room,
-     * but it won't be forced to grow with the viewport.
-     */
-    max-height: calc(100vh - 250px);
-
     aspect-ratio: 1 / 1;
 
     overflow: hidden;
@@ -69,8 +58,6 @@
     box-shadow:
         0 8px 20px rgba(0, 0, 0, .15),
         0 0 8px rgba(212, 175, 55, .35);
-
-    flex-shrink: 1;
 }
 
 
@@ -82,7 +69,7 @@
     width: 100%;
     height: 100%;
 
-    object-fit: contain;
+    object-fit: cover;
 
     transition: transform .5s ease;
 }
@@ -264,12 +251,18 @@
     margin-top: 30px;
 
     font-size: clamp(20px, 1.6vw, 28px);
-
+    
     font-weight: 600;
-
+    
     color: rgb(212, 175, 55);
     display: flex;
     flex-direction: column;
+}
+
+.conditionText {
+    color: black;
+    font-size: clamp(12px, 0.8vw, 24px);
+    font-weight: 200;
 }
 
 
@@ -314,11 +307,6 @@
     transform: translateY(-2px);
 }
 
-.conditionText {
-    color: black;
-    font-size: clamp(11px, 0.8vw, 25px);
-    font-weight: 200;
-}
 
 /* MOBILE */
 
@@ -350,14 +338,11 @@
         aspect-ratio: 1 / 1;
 
         max-height: none;
-
-        flex: none;
     }
 
-    /*
-     * Don't use desktop shine/zoom behavior
-     * on mobile.
-     */
+    .image {
+        object-fit: cover;
+    }
 
     .imageWrapper:hover .image {
         transform: none;

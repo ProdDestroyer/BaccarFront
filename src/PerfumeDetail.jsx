@@ -30,7 +30,7 @@ export const PerfumeDetail = () => {
     const whatsappConnect = () => {
 
         const message =
-            `Hola, estoy interesado(a) en el siguiente producto:\n${perfumeData.row[perfumeData.row.length -4]}\n${availableVolumes[selectedVolumeIndex]}`;
+            `Hola, estoy interesado(a) en el siguiente producto:\n${perfumeData.row[perfumeData.row.length -4]}\n${hasPresentations ? availableVolumes[selectedVolumeIndex] : perfumeData.row[perfumeData.row.length - 1]}`;
 
         const url =
             `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
