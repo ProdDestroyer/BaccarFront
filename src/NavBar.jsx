@@ -103,7 +103,7 @@ export const Navbar = () => {
                         </ul>
                     </li>
                     <li className={styles.navItem}>
-                        <span>Marcas</span>
+                        <span>Conócenos</span>
                     </li>
                     <li className={styles.navItem}>
                         <span>Haz Parte</span>
