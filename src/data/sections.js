@@ -1,6 +1,7 @@
 export const bodilySection = [
     {
         name: 'Todos',
+        type: 'corporal',
         imagePath: '/goldenCouple2.jpg',
         bannerText: 'Todos los Perfumes',
         backgroundPosition: 'center',
@@ -8,6 +9,7 @@ export const bodilySection = [
     },
     {
         name: 'Mujer',
+        type: 'corporal',
         imagePath: '/goldenFemaleModel.jpg',
         excelRange: "'Esencias y Sensaciones'!B7:L103",
         bannerText: 'Perfumes Para Mujer',
@@ -16,6 +18,7 @@ export const bodilySection = [
     },
     {
         name: 'Hombre',
+        type: 'corporal',
         imagePath: '/goldenMaleModel.jpg',
         excelRange: "'Esencias y Sensaciones'!B107:L201",
         bannerText: 'Perfumes Para Hombre',
@@ -24,6 +27,7 @@ export const bodilySection = [
     },
     {
         name: 'Unisex',
+        type: 'corporal',
         imagePath: '/goldenCouple.jpg',
         excelRange: "'Esencias y Sensaciones'!B205:L218",
         bannerText: 'Perfumes Unisex',
@@ -35,6 +39,7 @@ export const bodilySection = [
 export const homeSection = [
     {
         name: 'Todos',
+        type: 'home',
         imagePath: '/Home.jpg',
         bannerText: 'Todas las Fragancias',
         backgroundPosition: 'center',
@@ -42,6 +47,7 @@ export const homeSection = [
     },
     {
         name: 'Frutales',
+        type: 'home',
         imagePath: '/Fruits.jpg',
         excelRange: "'Hogar'!B3:G5",
         bannerText: 'Fragancias Frutales',
@@ -53,6 +59,7 @@ export const homeSection = [
 export const textilesSection = [
     {
         name: 'Todos',
+        type: 'textile',
         imagePath: '/goldenSilk.jpg',
         bannerText: 'Todas las Fragancias',
         backgroundPosition: 'center',
@@ -60,6 +67,7 @@ export const textilesSection = [
     },
     {
         name: 'Frescura',
+        type: 'textile',
         imagePath: '/goldenNatureSilk.jpg',
         excelRange: "'Textil'!B3:G5",
         bannerText: 'Fragancias Frescas',
@@ -68,6 +76,7 @@ export const textilesSection = [
     },
     {
         name: 'Frutales',
+        type: 'textile',
         imagePath: '/fruitGoldenSilk.jpg',
         excelRange: "'Textil'!B6:G6",
         bannerText: 'Fragancias Frutales',
@@ -79,6 +88,7 @@ export const textilesSection = [
 export const automotiveSection = [
     {
         name: 'Todos',
+        type: 'automotive',
         imagePath: '/car.jpg',
         excelRange: "'Automotriz'!B3:G5",
         bannerText: 'Fragancia Automotriz',

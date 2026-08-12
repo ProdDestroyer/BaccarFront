@@ -50,7 +50,7 @@ const loadSection = async (sections) => {
 
             return {
                 ...section,
-                data: addTypeToRows(rows, section.name)
+                data: addTypeToRows(rows, section.type)
             };
         })
     );

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./PerfumeTile.module.css";
 import { useSheetData } from "./context/SheetDataContext";
+import { isSinglePresentation } from "./utils/utils";
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
@@ -52,7 +53,8 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
 
         navigate("/perfumeDetail", {
             state: {
-                result: perfume
+                result: perfume,
+                corporal: isSinglePresentation(perfume.type),
             }
         });
     };

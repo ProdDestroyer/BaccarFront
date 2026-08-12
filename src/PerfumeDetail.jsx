@@ -14,7 +14,8 @@ export const PerfumeDetail = () => {
         ...location.state?.result,
     };
 
-    console.log('perfumeData', perfumeData);
+    const hasPresentations = location.state?.corporal;
+    console.log('hasPresentations ', hasPresentations);
 
     const description = perfumeData.row[perfumeData.row.length - 5];
     const [price, setPrice] = useState(perfumeData.row[perfumeData.row.length - 3].split(',')[0])
@@ -71,7 +72,7 @@ export const PerfumeDetail = () => {
                         <div className={styles.logoWrapper}>
 
                             <img
-                                src={perfumeData.row[5]}
+                                src={`${ !hasPresentations? '/blackLogo.png' : !perfumeData.row[5] ? 'blackLogo.png' : perfumeData.row[5]}`}
                                 alt=""
                                 className={styles.logo}
                             />
@@ -95,10 +96,10 @@ export const PerfumeDetail = () => {
 
                         {/* VOLUME PANEL */}
 
-                        <VolumeCarousel
+                        {hasPresentations && <VolumeCarousel
                             volumesString={perfumeData.row[perfumeData.row.length - 1]}
                             setSelectedVolumeIndex={updateRelatedToVolumeChange}
-                        />
+                        />}
 
                         {/* BUY BUTTON */}
 

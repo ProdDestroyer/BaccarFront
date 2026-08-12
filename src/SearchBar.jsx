@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 import styles from "./SearchBar.module.css";
 import { useSheetData } from "./context/SheetDataContext";
 import { useNavigate } from "react-router-dom";
-
+import { isSinglePresentation } from "./utils/utils";
 
 export const SearchBar = () => {
 
@@ -174,6 +174,7 @@ export const SearchBar = () => {
                             onClick={() => navigate("/perfumeDetail", {
                                 state: {
                                     result,
+                                    corporal: isSinglePresentation(result.type),
                                 },
                             })}
                         >

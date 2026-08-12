@@ -1,0 +1,1 @@
+export const singlePresentationTypesList = ['home', 'textile', 'automotive'];

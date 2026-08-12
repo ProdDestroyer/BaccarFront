@@ -1,6 +1,7 @@
 import styles from "./FrontPerfumeTile.module.css";
 import { useNavigate } from "react-router-dom";
 import { useSheetData } from "./context/SheetDataContext";
+import { isSinglePresentation } from "./utils/utils";
 
 export const FrontPerfumeTile = ({ perfumeInfo }) => {
 
@@ -49,7 +50,8 @@ export const FrontPerfumeTile = ({ perfumeInfo }) => {
 
         navigate("/perfumeDetail", {
             state: {
-                result: perfume
+                result: perfume,
+                corporal: isSinglePresentation(perfume.type),
             }
         });
     };
