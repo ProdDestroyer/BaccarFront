@@ -28,14 +28,16 @@ export const FrontPerfumeTile = ({ perfumeInfo }) => {
             .filter(Boolean)
             .flat()
             .filter(section => section.name !== "Todos")
-            .flatMap(section => section.data || [])
-            .map(row => ({
-                row,
-                name: row[1],
-                image: row.at(-2),
-                type: row.type,
-                id: `${row[0]}`
-            }))
+            .flatMap(section =>
+                (section.data || []).map(row => ({
+                    row,
+                    name: row[1],
+                    image: row.at(-2),
+                    type: section.type,
+                    prefix: section.prefix,
+                    id: `${row[0]}`
+                }))
+            )
             .find(perfume => perfume.id === `${perfumeInfo[0]}`);
 
 

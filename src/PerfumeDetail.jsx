@@ -57,7 +57,16 @@ export const PerfumeDetail = () => {
                         </div>
 
                         <h1 className={styles.name}>
-                            {perfumeData.name}
+                            { hasPresentations ?
+                                (<><strong>{perfumeData.row[3]}</strong>{" "}
+                                    inspirado en{" "}
+                                    <strong>{perfumeData.row[1]}</strong>{" "}
+                                    de{" "}
+                                    <strong>{perfumeData.row[2]}</strong></>) : (
+                            <>
+                                {perfumeData.prefix} aroma{" "}
+                                <strong>{perfumeData.row[1]}</strong>
+                            </>)}
                         </h1>
 
                     </div>
@@ -72,7 +81,7 @@ export const PerfumeDetail = () => {
                         <div className={styles.logoWrapper}>
 
                             <img
-                                src={`${ !hasPresentations? '/blackLogo.png' : !perfumeData.row[5] ? 'blackLogo.png' : perfumeData.row[5]}`}
+                                src={`${!hasPresentations ? '/blackLogo.png' : !perfumeData.row[5] ? 'blackLogo.png' : perfumeData.row[5]}`}
                                 alt=""
                                 className={styles.logo}
                             />

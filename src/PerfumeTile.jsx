@@ -6,14 +6,15 @@ import { isSinglePresentation } from "./utils/utils";
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
-        const {
-            bodilySection,
-            homeSection,
-            textilesSection,
-            automotiveSection
-        } = useSheetData();
+    const {
+        bodilySection,
+        homeSection,
+        textilesSection,
+        automotiveSection
+    } = useSheetData();
     const navigate = useNavigate();
 
+    console.log('perfumeInfo ', perfumeInfo)
     const backgroundImage = perfumeInfo[perfumeInfo.length - 2];
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(",");
     const whatsappMessage = perfumeInfo[perfumeInfo.length - 4];
@@ -31,14 +32,16 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
             .filter(Boolean)
             .flat()
             .filter(section => section.name !== "Todos")
-            .flatMap(section => section.data || [])
-            .map(row => ({
-                row,
-                name: row[1],
-                image: row.at(-2),
-                type: row.type,
-                id: `${row[0]}`
-            }))
+            .flatMap(section =>
+                (section.data || []).map(row => ({
+                    row,
+                    name: row[1],
+                    image: row.at(-2),
+                    type: section.type,
+                    prefix: section.prefix,
+                    id: `${row[0]}`
+                }))
+            )
             .find(perfume => perfume.id === `${perfumeInfo[0]}`);
 
 
@@ -50,7 +53,7 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
             return;
         }
 
-
+        console.log('interested ', perfume);
         navigate("/perfumeDetail", {
             state: {
                 result: perfume,

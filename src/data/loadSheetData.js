@@ -21,11 +21,11 @@ const fetchSheetRange = async (range) => {
 };
 
 
-const addTypeToRows = (rows, type) => {
+const addCategoryToRows = (rows, category,) => {
     return rows.map((row) => {
         const newRow = [...row];
 
-        newRow.type = type;
+        newRow.category = category;
 
         return newRow;
     });
@@ -47,10 +47,9 @@ const loadSection = async (sections) => {
             }
 
             const rows = await fetchSheetRange(section.excelRange);
-
             return {
                 ...section,
-                data: addTypeToRows(rows, section.type)
+                data: addCategoryToRows(rows, section.category),
             };
         })
     );

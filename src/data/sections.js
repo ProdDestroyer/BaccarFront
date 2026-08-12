@@ -1,6 +1,6 @@
 export const bodilySection = [
     {
-        name: 'Todos',
+        category: 'Todos',
         type: 'corporal',
         imagePath: '/goldenCouple2.jpg',
         bannerText: 'Todos los Perfumes',
@@ -8,7 +8,7 @@ export const bodilySection = [
         topShadow: false
     },
     {
-        name: 'Mujer',
+        category: 'Mujer',
         type: 'corporal',
         imagePath: '/goldenFemaleModel.jpg',
         excelRange: "'Esencias y Sensaciones'!B7:L103",
@@ -17,7 +17,7 @@ export const bodilySection = [
         topShadow: false
     },
     {
-        name: 'Hombre',
+        category: 'Hombre',
         type: 'corporal',
         imagePath: '/goldenMaleModel.jpg',
         excelRange: "'Esencias y Sensaciones'!B107:L201",
@@ -26,7 +26,7 @@ export const bodilySection = [
         topShadow: false
     },
     {
-        name: 'Unisex',
+        category: 'Unisex',
         type: 'corporal',
         imagePath: '/goldenCouple.jpg',
         excelRange: "'Esencias y Sensaciones'!B205:L218",
@@ -38,16 +38,18 @@ export const bodilySection = [
 
 export const homeSection = [
     {
-        name: 'Todos',
+        category: 'Todos',
         type: 'home',
+        prefix: 'Difusor',
         imagePath: '/Home.jpg',
         bannerText: 'Todas las Fragancias',
         backgroundPosition: 'center',
         topShadow: false
     },
     {
-        name: 'Frutales',
+        category: 'Frutales',
         type: 'home',
+        prefix: 'Difusor',
         imagePath: '/Fruits.jpg',
         excelRange: "'Hogar'!B3:G5",
         bannerText: 'Fragancias Frutales',
@@ -58,16 +60,18 @@ export const homeSection = [
 
 export const textilesSection = [
     {
-        name: 'Todos',
+        category: 'Todos',
         type: 'textile',
+        prefix: 'Aromatizante',
         imagePath: '/goldenSilk.jpg',
         bannerText: 'Todas las Fragancias',
         backgroundPosition: 'center',
         topShadow: true
     },
     {
-        name: 'Frescura',
+        category: 'Frescura',
         type: 'textile',
+        prefix: 'Aromatizante',
         imagePath: '/goldenNatureSilk.jpg',
         excelRange: "'Textil'!B3:G5",
         bannerText: 'Fragancias Frescas',
@@ -75,8 +79,9 @@ export const textilesSection = [
         topShadow: true
     },
     {
-        name: 'Frutales',
+        category: 'Frutales',
         type: 'textile',
+        prefix: 'Aromatizante',
         imagePath: '/fruitGoldenSilk.jpg',
         excelRange: "'Textil'!B6:G6",
         bannerText: 'Fragancias Frutales',
@@ -87,8 +92,9 @@ export const textilesSection = [
 
 export const automotiveSection = [
     {
-        name: 'Todos',
+        category: 'Todos',
         type: 'automotive',
+        prefix: 'Ambientador',
         imagePath: '/car.jpg',
         excelRange: "'Automotriz'!B3:G5",
         bannerText: 'Fragancia Automotriz',
@@ -99,11 +105,11 @@ export const automotiveSection = [
 
 export const frontLists = [
     {
-        name: 'Tendencias',
+        category: 'Tendencias',
         excelRange: "'Tendencias'!A4:I8"
     },
     {
-        name: 'Novedades',
+        category: 'Novedades',
         excelRange: "'Novedades'!A4:I8"
     }
 ];

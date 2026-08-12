@@ -1,15 +1,12 @@
 .page {
     width: 100%;
-
     min-height: 100vh;
-
     box-sizing: border-box;
 
     padding: calc(60px + 40px) 5% 40px 1%;
 
     font-family: "Inter", sans-serif;
 }
-
 
 /* MAIN PRODUCT */
 
@@ -21,11 +18,12 @@
     width: 100%;
     max-width: 1400px;
 
+    height: calc(100vh - 140px);
+
     margin: 0 auto;
 
     gap: 6%;
 }
-
 
 /* LEFT SIDE */
 
@@ -37,8 +35,10 @@
     align-items: center;
 
     min-width: 0;
-}
+    min-height: 0;
 
+    height: 100%;
+}
 
 /* IMAGE */
 
@@ -46,8 +46,9 @@
     position: relative;
 
     width: 100%;
+    min-height: 0;
 
-    aspect-ratio: 1 / 1;
+    flex: 1;
 
     overflow: hidden;
 
@@ -62,7 +63,6 @@
         0 0 8px rgba(212, 175, 55, .35);
 }
 
-
 /* IMAGE */
 
 .image {
@@ -76,13 +76,11 @@
     transition: transform .5s ease;
 }
 
-
 /* IMAGE ZOOM */
 
 .imageWrapper:hover .image {
     transform: scale(1.03);
 }
-
 
 /* SHINE */
 
@@ -97,16 +95,17 @@
     width: 60%;
     height: 100%;
 
-    background: linear-gradient(100deg,
-            transparent,
-            rgba(255, 255, 255, .45),
-            transparent);
+    background: linear-gradient(
+        100deg,
+        transparent,
+        rgba(255, 255, 255, .45),
+        transparent
+    );
 
     transform: skewX(-20deg);
 
     pointer-events: none;
 }
-
 
 /* SHINE ON HOVER */
 
@@ -114,9 +113,7 @@
     animation: shine .7s ease;
 }
 
-
 @keyframes shine {
-
     from {
         left: -120%;
     }
@@ -125,7 +122,6 @@
         left: 150%;
     }
 }
-
 
 /* NAME */
 
@@ -147,8 +143,9 @@
     color: black;
 
     position: relative;
-}
 
+    flex-shrink: 0;
+}
 
 .name::after {
     content: "";
@@ -167,7 +164,6 @@
     transform: translateX(-50%);
 }
 
-
 /* RIGHT SIDE */
 
 .rightSide {
@@ -175,26 +171,14 @@
 
     flex-direction: column;
 
-    /*
-     * Previously this was:
-     *
-     * justify-content: center;
-     *
-     * This centers the entire right panel vertically.
-     *
-     * flex-start moves it toward the top.
-     */
     justify-content: flex-start;
 
     align-items: flex-start;
+
     min-width: 0;
 
-    /*
-     * Reduce this if you want it even higher.
-     */
     padding: 5% 0 20px;
 }
-
 
 /* BRAND LOGO */
 
@@ -210,14 +194,17 @@
     align-items: center;
 
     flex-shrink: 0;
+
     border: 1px solid black;
+
     border-radius: 3px;
+
     padding: 1%;
+
     box-shadow:
         0 8px 20px rgba(0, 0, 0, .15),
         0 0 8px rgba(212, 175, 55, .35);
 }
-
 
 .logo {
     display: block;
@@ -228,13 +215,11 @@
     object-fit: contain;
 }
 
-
 /* DESCRIPTION */
 
 .descriptionWrapper {
     width: 100%;
 }
-
 
 .description {
     margin: 0;
@@ -246,21 +231,21 @@
     color: #333;
 
     overflow-wrap: anywhere;
+
     white-space: pre-line;
 }
-
 
 /* PRICE */
 
 .price {
     margin-top: 30px;
+
     font-size: clamp(20px, 1.6vw, 28px);
 
     font-weight: 600;
 
     color: rgb(212, 175, 55);
 }
-
 
 /* BUY BUTTON */
 
@@ -292,7 +277,6 @@
         transform .25s ease;
 }
 
-
 .buyButton:hover {
     background: rgb(212, 175, 55);
 
@@ -303,33 +287,41 @@
     transform: translateY(-2px);
 }
 
-
 /* MOBILE */
 
 @media (max-width: 768px) {
 
     .page {
-         padding: calc(44px + 25px) 5% 25px 5%;
+        padding: calc(44px + 25px) 5% 25px 5%;
     }
 
     .product {
         grid-template-columns: 1fr;
+
+        height: auto;
 
         gap: 30px;
     }
 
     .leftSide {
         width: 100%;
+
+        height: auto;
     }
 
     .imageWrapper {
         width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        flex: none;
     }
 
     /*
-     * Don't use the desktop shine/zoom behavior
+     * Don't use desktop shine/zoom behavior
      * on mobile.
      */
+
     .imageWrapper:hover .image {
         transform: none;
     }

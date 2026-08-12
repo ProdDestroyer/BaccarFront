@@ -39,19 +39,22 @@ export const SearchBar = () => {
             automotiveSection
         ];
 
+
         return allSections
             .filter(Boolean)
             .flat()
             .filter(section => section.name !== "Todos")
-            .flatMap(section => section.data || [])
-            .map(row => ({
-                row,
-                name: row[1],
-                image: row.at(-2),
-                type: row.type,
-                id: `${row[0]}`
-            }));
-
+            .flatMap(section =>
+                (section.data || []).map(row => ({
+                    row,
+                    name: row[1],
+                    image: row.at(-2),
+                    type: section.type,
+                    prefix: section.prefix,
+                    category: section.category,
+                    id: `${row[0]}`
+                }))
+            );
     }, [
         bodilySection,
         homeSection,
@@ -189,7 +192,7 @@ export const SearchBar = () => {
                                 {result.name}
                             </span>
                             <span className={styles.resultName}>
-                                {result.type}
+                                {result.category}
                             </span>
 
                         </div>

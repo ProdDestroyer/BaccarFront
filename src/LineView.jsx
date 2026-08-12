@@ -33,12 +33,11 @@ export const LineView = () => {
   useEffect(() => {
     const fetchData = async () => {
       const perfumesDraft = [];
-      const ranges = (sections.length > 1) ? sections.filter(section => (section.name != 'Todos')).map(section => (section.excelRange)) : [sections[0].excelRange];
+      const ranges = (sections.length > 1) ? sections.filter(section => (section.category != 'Todos')).map(section => (section.excelRange)) : [sections[0].excelRange];
       const lists = await Promise.all(
         ranges.map(range => fetchRange(range))
       );
 
-      console.log(' ranges ', ranges);
       perfumesDraft.unshift(lists.flat());
       if (sections.length > 1) {
         for (let i = 0; i < lists.length; i++) {
@@ -49,7 +48,6 @@ export const LineView = () => {
 
       setPerfumes(perfumesDraft);
       setPerfumesList(perfumesDraft[0]);
-      console.log('perfumesDraft ', perfumesDraft);
       setSelectedSet(0);
     };
 
@@ -125,7 +123,7 @@ useEffect(() => {
           className={`${styles.topMenuItems} ${menuShadow || window.innerWidth <= 768 ? `${styles.shadowBackground} ${styles.whiteColor}` : ""}`}
           onMouseEnter={() => turnOnShadow()}
           onMouseLeave={() => turnOffShadow()}>
-          {sections.map(section => (section.name)).map((sectionName, index) => (
+          {sections.map(section => (section.category)).map((sectionName, index) => (
             <span key={index} onClick={() => setBackgroundImageFacade(index)} style={{ color: `${selectedSet == index ? `rgb(212, 175, 55)` : `white`}` }}>{sectionName}</span>
           ))}
         </div>
@@ -137,9 +135,9 @@ useEffect(() => {
           <Spinner />
         ) : (
           <PerfumesPanel
-            key={sections[selectedSet].name}
+            key={sections[selectedSet].category}
             perfumesList={perfumesList}
-            sectionName={sections[selectedSet].name}
+            sectionName={sections[selectedSet].category}
             singleSize={singleSize}
             prefix={prefix}
           />
