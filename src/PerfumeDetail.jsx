@@ -18,16 +18,19 @@ export const PerfumeDetail = () => {
     console.log('hasPresentations ', hasPresentations);
 
     const description = perfumeData.row[perfumeData.row.length - 5];
+    const availableVolumes = perfumeData.row[perfumeData.row.length-1]?.split(',');
     const [price, setPrice] = useState(perfumeData.row[perfumeData.row.length - 3].split(',')[0])
+    const [selectedVolumeIndex, setSelectedVolumeIndex] = useState(perfumeData.row[perfumeData.row.length - 3].split(',')[0])
     console.log("perfumeData ", perfumeData);
 
     const updateRelatedToVolumeChange = (index) => {
         setPrice(perfumeData.row[perfumeData.row.length - 3].split(',')[index]);
+        setSelectedVolumeIndex(index);
     }
     const whatsappConnect = () => {
 
         const message =
-            `Hola, estoy interesado(a) en el siguiente producto:\n${perfumeData.name}`;
+            `Hola, estoy interesado(a) en el siguiente producto:\n${perfumeData.row[perfumeData.row.length -4]}\n${availableVolumes[selectedVolumeIndex]}`;
 
         const url =
             `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -98,7 +101,8 @@ export const PerfumeDetail = () => {
                             </p>
 
                             <div className={styles.price}>
-                                {`$${price}`}
+                                
+                                <span>{`$${price}`}</span> <span className={styles.conditionText}> Recuerda que nuestros productos son inspirados en la fragancia original</span>
                             </div>
 
                         </div>

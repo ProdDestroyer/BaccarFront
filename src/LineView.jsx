@@ -32,7 +32,6 @@ export const LineView = () => {
     setShowModal(true);
   }
   const modalOff = () => {
-    console.log('modal off');
     setShowModal(false);
   }
 
