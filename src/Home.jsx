@@ -49,7 +49,7 @@ export const Home = () => {
               key={index}
               className={styles.frontListAnchor}
               ref={(element) => {
-                frontListRefs.current[frontPerfumeList.name] = element;
+                frontListRefs.current[frontPerfumeList.category] = element;
               }}
             >
               <FrontList
