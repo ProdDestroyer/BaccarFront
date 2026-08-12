@@ -57,7 +57,7 @@ export const VolumeCarousel = ({
                             <div className={styles.imageWrapper}>
 
                                 <img
-                                    src={imageURL ? `/${volume}.png` : `${imageURL}`}
+                                    src={!imageURL ? `/${volume}.png` : `${imageURL}`}
                                     alt={volume}
                                     className={styles.image}
                                 />
