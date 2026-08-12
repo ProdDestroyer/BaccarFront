@@ -147,6 +147,20 @@
     font-weight: 700;
 }
 
+.modalMode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modalMode .volumeTitle {
+    text-align: center;
+}
+
+.modalMode .volumeList {
+    justify-content: center;
+}
 
 /* MOBILE */
 
@@ -179,3 +193,4 @@
     }
     
 }
+

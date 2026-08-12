@@ -1,6 +1,11 @@
+import { useState } from "react";
 import styles from "./PurchaseModal.module.css";
+import { VolumeCarousel } from "./VolumeCarousel";
 
-export const PurchaseModal = ({ onBuy, onCancel }) => {
+export const PurchaseModal = ({ onBuy, onCancel, volumesString, imageURL }) => {
+
+    const availableVolumes = volumesString?.split(',');
+    const [selectedVolume, setSelectedVolume] = useState(0);
 
     return (
         <div className={styles.overlay}>
@@ -22,8 +27,13 @@ export const PurchaseModal = ({ onBuy, onCancel }) => {
                 {/* BODY */}
                 <div className={styles.body}>
 
-                    {/* Your content goes here */}
-
+                    <VolumeCarousel
+                        volumesString={volumesString}
+                        modalMode={true}
+                        setSelectedVolumeIndex={setSelectedVolume}
+                        imageURL={imageURL}
+                    />
+                    <p>Recuerda que nuestros productos son inspirados en el producto original</p>
                 </div>
 
 
@@ -32,7 +42,7 @@ export const PurchaseModal = ({ onBuy, onCancel }) => {
 
                     <button
                         className={`${styles.button} ${styles.buyButton}`}
-                        onClick={onBuy}
+                        onClick={() => onBuy(availableVolumes[selectedVolume])}
                     >
                         Comprar
                     </button>

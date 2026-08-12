@@ -1,7 +1,12 @@
 import { useState } from "react";
 import styles from "./VolumeCarousel.module.css";
 
-export const VolumeCarousel = ({ volumesString, setSelectedVolumeIndex }) => {
+export const VolumeCarousel = ({
+    volumesString,
+    setSelectedVolumeIndex,
+    modalMode = false,
+    imageURL
+}) => {
 
     const volumes = volumesString
         ? volumesString
@@ -25,7 +30,7 @@ export const VolumeCarousel = ({ volumesString, setSelectedVolumeIndex }) => {
     }
 
     return (
-        <div className={styles.volumePanel}>
+        <div className={`${styles.volumePanel} ${modalMode ? styles.modalMode : ""}`}> 
 
             <div className={styles.volumeTitle}>
                 Presentación
@@ -52,7 +57,7 @@ export const VolumeCarousel = ({ volumesString, setSelectedVolumeIndex }) => {
                             <div className={styles.imageWrapper}>
 
                                 <img
-                                    src={`/${volume}.png`}
+                                    src={imageURL ? `/${volume}.png` : `${imageURL}`}
                                     alt={volume}
                                     className={styles.image}
                                 />

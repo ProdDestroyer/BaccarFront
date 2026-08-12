@@ -3,9 +3,7 @@ import styles from "./PerfumeTile.module.css";
 import { useSheetData } from "./context/SheetDataContext";
 import { isSinglePresentation } from "./utils/utils";
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
-
-export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
+export const PerfumeTile = ({ perfumeInfo, single, prefix, modalOn, setWhatsappMessage, setVolumeSetString }) => {
     const {
         bodilySection,
         homeSection,
@@ -14,7 +12,6 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
     } = useSheetData();
     const navigate = useNavigate();
 
-    console.log('perfumeInfo ', perfumeInfo)
     const backgroundImage = perfumeInfo[perfumeInfo.length - 2];
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(",");
     const whatsappMessage = perfumeInfo[perfumeInfo.length - 4];
@@ -62,17 +59,6 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
         });
     };
 
-    const whatsappConnect = () => {
-
-        const message =
-            `Hola, estoy interesado(a) en el siguiente producto:\n${whatsappMessage}`;
-
-        const url =
-            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-        window.open(url, "_blank");
-    };
-
     return (
         <div className={styles.tile}>
 
@@ -86,7 +72,12 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
 
                 <div
                     className={styles.buyOverlay}
-                    onClick={whatsappConnect}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setWhatsappMessage(whatsappMessage);
+                        setVolumeSetString(perfumeInfo[perfumeInfo.length-1]);
+                        modalOn(single ? backgroundImage : null);
+                    }}
                 >
                     Comprar
                     <br />

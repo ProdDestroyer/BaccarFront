@@ -5,8 +5,10 @@ import { PerfumesPanel } from "./PerfumesPanel";
 import { FeaturesBanner } from "./FeaturesBanner";
 import { Footer } from "./Footer";
 import { Spinner } from "./Spinner";
+import { PurchaseModal } from "./PurchaseModal";
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const SHEET_ID = import.meta.env.VITE_SHEET_ID;
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const LineView = () => {
   const navigate = useNavigate();
@@ -20,6 +22,30 @@ export const LineView = () => {
   const [perfumes, setPerfumes] = useState([]);
   const [perfumesList, setPerfumesList] = useState(perfumes[1]);
   const [selectedSet, setSelectedSet] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [whatsappMessage, setWhatsappMessage] = useState('Hola Baccar');
+  const [volumeSetString, setVolumeSetString] = useState(null);
+  const [singleVolumeImage, setSingleVolumeImage] = useState(null);
+
+  const modalOn = (imageURL) => {
+    setSingleVolumeImage(imageURL)
+    setShowModal(true);
+  }
+  const modalOff = () => {
+    console.log('modal off');
+    setShowModal(false);
+  }
+
+   const whatsappConnect = (selectedVolume) => {
+  
+          const message =
+              `Hola, estoy interesado(a) en el siguiente producto:\n${whatsappMessage}\n${selectedVolume}`;
+  
+          const url =
+              `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  
+          window.open(url, "_blank");
+      };
 
   const fetchRange = async (range) => {
     const response = await fetch(
@@ -57,18 +83,18 @@ export const LineView = () => {
   const imageRef = useRef(null);
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     const node = imageRef.current;
     if (!node) return;
 
     const observer = new IntersectionObserver(
-        ([entry]) => setShowNavbarLogo(!entry.isIntersecting),
-        { rootMargin: "-60px 0px 0px 0px", threshold: 0 }
+      ([entry]) => setShowNavbarLogo(!entry.isIntersecting),
+      { rootMargin: "-60px 0px 0px 0px", threshold: 0 }
     );
 
     observer.observe(node);
     return () => observer.disconnect();
-}, []);
+  }, []);
 
   const turnOnShadow = () => {
     if (!sections[selectedSet].topShadow) {
@@ -89,11 +115,17 @@ useEffect(() => {
 
   return (
     <>
+      {showModal && <PurchaseModal 
+      onCancel={modalOff}
+      imageURL={singleVolumeImage}
+      onBuy={whatsappConnect} 
+      volumesString={volumeSetString}/>}
+
       <div className={styles.navBar}>
         <div
           className={`${styles.navBarImageContainer} ${showNavbarLogo
-              ? styles.navBarLogoVisible
-              : styles.navBarLogoHidden
+            ? styles.navBarLogoVisible
+            : styles.navBarLogoHidden
             }`}
         >
           <div
@@ -140,6 +172,9 @@ useEffect(() => {
             sectionName={sections[selectedSet].category}
             singleSize={singleSize}
             prefix={prefix}
+            modalOn={modalOn}
+            setWhatsappMessage={setWhatsappMessage}
+            setVolumeSetString={setVolumeSetString}
           />
         )}
       </div>

@@ -6,7 +6,7 @@ import { Pagination } from "./Pagination";
 const ROWS_PER_PAGE = 5;
 const PAGE_GROUP_SIZE = 3;
 
-export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix }) => {
+export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix, modalOn, setWhatsappMessage, setVolumeSetString }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [perfumesPerPage, setPerfumesPerPage] = useState(15);
     const gridRef = useRef(null);
@@ -75,6 +75,9 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix })
                         key={`${startIndex + index}-${sectionName}`}
                         perfumeInfo={perfumeData}
                         single={singleSize}
+                        modalOn={modalOn}
+                        setWhatsappMessage={setWhatsappMessage}
+                        setVolumeSetString={setVolumeSetString}
                     />
                 ))}
             </div>
