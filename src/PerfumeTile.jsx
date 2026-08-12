@@ -1,12 +1,61 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./PerfumeTile.module.css";
+import { useSheetData } from "./context/SheetDataContext";
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
 export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
+        const {
+            bodilySection,
+            homeSection,
+            textilesSection,
+            automotiveSection
+        } = useSheetData();
+    const navigate = useNavigate();
 
     const backgroundImage = perfumeInfo[perfumeInfo.length - 2];
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(",");
     const whatsappMessage = perfumeInfo[perfumeInfo.length - 4];
+
+    const openPerfumeDetail = () => {
+
+        const allSections = [
+            bodilySection,
+            homeSection,
+            textilesSection,
+            automotiveSection
+        ];
+
+        const perfume = allSections
+            .filter(Boolean)
+            .flat()
+            .filter(section => section.name !== "Todos")
+            .flatMap(section => section.data || [])
+            .map(row => ({
+                row,
+                name: row[1],
+                image: row.at(-2),
+                type: row.type,
+                id: `${row[0]}`
+            }))
+            .find(perfume => perfume.id === `${perfumeInfo[0]}`);
+
+
+        if (!perfume) {
+            console.error(
+                "Could not find perfume with id:",
+                perfumeInfo[0]
+            );
+            return;
+        }
+
+
+        navigate("/perfumeDetail", {
+            state: {
+                result: perfume
+            }
+        });
+    };
 
     const whatsappConnect = () => {
 
@@ -22,7 +71,7 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix }) => {
     return (
         <div className={styles.tile}>
 
-            <div className={styles.imageWrapper}>
+            <div className={styles.imageWrapper} onClick={openPerfumeDetail}>
 
                 {backgroundImage && <img
                     src={backgroundImage}
