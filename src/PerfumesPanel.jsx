@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./PerfumesPanel.module.css";
 import { PerfumeTile } from "./PerfumeTile";
 import { Pagination } from "./Pagination";
+import { Spinner } from "./Spinner";
 
 const ROWS_PER_PAGE = 5;
 const PAGE_GROUP_SIZE = 3;
@@ -9,6 +10,7 @@ const PAGE_GROUP_SIZE = 3;
 export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix, modalOn, setWhatsappMessage, setVolumeSetString }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [perfumesPerPage, setPerfumesPerPage] = useState(15);
+    const [loadedImagesAmount, setLoadedImagesAmount] = useState(0);
     const gridRef = useRef(null);
 
     useEffect(() => {
@@ -40,6 +42,17 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix, m
         startIndex + perfumesPerPage
     );
 
+    const increaseLoadedImagesAmount = () => {
+        setLoadedImagesAmount(amount => amount + 1);
+    };
+
+    const allImagesLoaded = loadedImagesAmount >= currentPerfumes.length;
+
+    const changePage = (page) => {
+        setLoadedImagesAmount(0);
+        setCurrentPage(page);
+    };
+
     let firstPage =
         Math.floor((currentPage - 1) / PAGE_GROUP_SIZE) * PAGE_GROUP_SIZE + 1;
 
@@ -55,41 +68,49 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix, m
     );
 
     return (
-        <>
-            {totalPages > 1 && (
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    pages={pages}
-                    setCurrentPage={setCurrentPage}
-                />
+    <>
+        {totalPages > 1 && (
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                pages={pages}
+                setCurrentPage={changePage}
+            />
+        )}
+
+        <div
+            ref={gridRef}
+            className={styles.generalContainer}
+        >
+            {!allImagesLoaded && (
+                <div className={styles.spinnerOverlay}>
+                    <Spinner />
+                </div>
             )}
 
-            <div
-                ref={gridRef}
-                className={styles.generalContainer}
-            >
-                {currentPerfumes.map((perfumeData, index) => (
-                    <PerfumeTile
-                        prefix={prefix}
-                        key={`${startIndex + index}-${sectionName}`}
-                        perfumeInfo={perfumeData}
-                        single={singleSize}
-                        modalOn={modalOn}
-                        setWhatsappMessage={setWhatsappMessage}
-                        setVolumeSetString={setVolumeSetString}
-                    />
-                ))}
-            </div>
-
-            {totalPages > 1 && (
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    pages={pages}
-                    setCurrentPage={setCurrentPage}
+            {currentPerfumes.map((perfumeData, index) => (
+                <PerfumeTile
+                    prefix={prefix}
+                    allImagesLoaded={allImagesLoaded}
+                    increaseLoadedImagesAmount={increaseLoadedImagesAmount}
+                    key={`${startIndex + index}-${sectionName}`}
+                    perfumeInfo={perfumeData}
+                    single={singleSize}
+                    modalOn={modalOn}
+                    setWhatsappMessage={setWhatsappMessage}
+                    setVolumeSetString={setVolumeSetString}
                 />
-            )}
-        </>
-    );
+            ))}
+        </div>
+
+        {totalPages > 1 && (
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                pages={pages}
+                setCurrentPage={changePage}
+            />
+        )}
+    </>
+);
 };

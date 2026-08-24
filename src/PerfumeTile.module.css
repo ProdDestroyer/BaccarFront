@@ -6,6 +6,18 @@
     font-family: "Inter", sans-serif;
 
     box-sizing: border-box;
+    opacity: 1;
+}
+
+.tileLoading {
+    position: relative;
+
+    width: 100%;
+
+    font-family: "Inter", sans-serif;
+
+    box-sizing: border-box;
+    opacity: 0;
 }
 
 

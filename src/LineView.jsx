@@ -166,7 +166,6 @@ export const LineView = () => {
           <Spinner />
         ) : (
           <PerfumesPanel
-            key={sections[selectedSet].category}
             perfumesList={perfumesList}
             sectionName={sections[selectedSet].category}
             singleSize={singleSize}

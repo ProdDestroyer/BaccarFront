@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom";
 import styles from "./PerfumeTile.module.css";
 import { useSheetData } from "./context/SheetDataContext";
 import { isSinglePresentation } from "./utils/utils";
+import { useState } from "react";
 
-export const PerfumeTile = ({ perfumeInfo, single, prefix, modalOn, setWhatsappMessage, setVolumeSetString }) => {
+export const PerfumeTile = ({ increaseLoadedImagesAmount, allImagesLoaded, perfumeInfo, single, prefix, modalOn, setWhatsappMessage, setVolumeSetString }) => {
     const {
         bodilySection,
         homeSection,
@@ -11,6 +12,7 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix, modalOn, setWhatsappM
         automotiveSection
     } = useSheetData();
     const navigate = useNavigate();
+    const [imageError, setImageError] = useState(false);
 
     const backgroundImage = perfumeInfo[perfumeInfo.length - 2];
     const perfumePrices = perfumeInfo[perfumeInfo.length - 3].split(",");
@@ -60,13 +62,15 @@ export const PerfumeTile = ({ perfumeInfo, single, prefix, modalOn, setWhatsappM
     };
 
     return (
-        <div className={styles.tile}>
+        <div className={allImagesLoaded ? styles.tile : styles.tileLoading}>
 
             <div className={styles.imageWrapper} onClick={openPerfumeDetail}>
 
-                {backgroundImage && <img
+                {backgroundImage && !imageError && <img
                     src={backgroundImage}
                     alt={perfumeInfo[0]}
+                    onLoad={() => {increaseLoadedImagesAmount()}}
+                    onError={() => {increaseLoadedImagesAmount(); setImageError(true)}}
                     className={styles.image}
                 />}
 

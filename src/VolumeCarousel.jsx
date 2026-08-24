@@ -30,7 +30,7 @@ export const VolumeCarousel = ({
     }
 
     return (
-        <div className={`${styles.volumePanel} ${modalMode ? styles.modalMode : ""}`}> 
+        <div className={`${styles.volumePanel} ${modalMode ? styles.modalMode : ""}`}>
 
             <div className={styles.volumeTitle}>
                 Presentación
@@ -50,7 +50,7 @@ export const VolumeCarousel = ({
                                 selected
                                     ? styles.selected
                                     : ""
-                            }`}
+                                }`}
                             onClick={() => updateSelectedVolumeIndex(index)}
                         >
 
