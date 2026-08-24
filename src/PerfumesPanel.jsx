@@ -79,29 +79,31 @@ export const PerfumesPanel = ({ perfumesList, sectionName, singleSize, prefix, m
         )}
 
         <div
-            ref={gridRef}
-            className={styles.generalContainer}
-        >
-            {!allImagesLoaded && (
-                <div className={styles.spinnerOverlay}>
-                    <Spinner />
-                </div>
-            )}
-
-            {currentPerfumes.map((perfumeData, index) => (
-                <PerfumeTile
-                    prefix={prefix}
-                    allImagesLoaded={allImagesLoaded}
-                    increaseLoadedImagesAmount={increaseLoadedImagesAmount}
-                    key={`${startIndex + index}-${sectionName}`}
-                    perfumeInfo={perfumeData}
-                    single={singleSize}
-                    modalOn={modalOn}
-                    setWhatsappMessage={setWhatsappMessage}
-                    setVolumeSetString={setVolumeSetString}
-                />
-            ))}
+    ref={gridRef}
+    className={`${styles.generalContainer} ${
+        !allImagesLoaded ? styles.loading : ""
+    }`}
+>
+    {!allImagesLoaded && (
+        <div className={styles.spinnerOverlay}>
+            <Spinner />
         </div>
+    )}
+
+    {currentPerfumes.map((perfumeData, index) => (
+        <PerfumeTile
+            prefix={prefix}
+            allImagesLoaded={allImagesLoaded}
+            increaseLoadedImagesAmount={increaseLoadedImagesAmount}
+            key={`${startIndex + index}-${sectionName}`}
+            perfumeInfo={perfumeData}
+            single={singleSize}
+            modalOn={modalOn}
+            setWhatsappMessage={setWhatsappMessage}
+            setVolumeSetString={setVolumeSetString}
+        />
+    ))}
+</div>
 
         {totalPages > 1 && (
             <Pagination
